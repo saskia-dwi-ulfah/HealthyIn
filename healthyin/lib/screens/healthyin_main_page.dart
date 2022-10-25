@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 
-class WelcomePage extends StatelessWidget {
+class HealthyInMainPage extends StatelessWidget {
   String email;
-  WelcomePage({Key? key, required this.email}) : super(key: key);
+  HealthyInMainPage({Key? key, required this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
