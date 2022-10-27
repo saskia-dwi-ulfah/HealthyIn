@@ -17,22 +17,19 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    return Column(
-      children: [
-        Column(
-          children: [
-            Container(
-              height: h,
-              width: w,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image:
-                          AssetImage("assets/images/self_screening_bg_x2.png"),
-                      fit: BoxFit.cover)),
-            )
-          ],
-        )
-      ],
+    return Scaffold(
+      body: Container(
+        height: h,
+        width: w,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/self_screening_bg_x2.png"),
+                fit: BoxFit.cover)),
+        child: Column(children: [
+          SizedBox(height: 0.4 * h),
+          /*All questions start here*/
+        ]),
+      ),
     );
   }
 }

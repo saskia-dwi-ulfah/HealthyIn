@@ -17,15 +17,16 @@ class HealthyInSplashScreen extends StatelessWidget {
       width: w,
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/splashscreen_bg.png'),
-            fit: BoxFit.fill),
+            image: AssetImage('assets/images/splashscreen_bg_x2.png'),
+            fit: BoxFit.cover),
       ),
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
           Positioned(
             top: 0.35 * h,
-            child: Image.asset('assets/icons/splashscreen_tagline.png'),
+            child: Image.asset('assets/icons/splashscreen_tagline_x2.png',
+                scale: 2),
           )
         ],
       ),
