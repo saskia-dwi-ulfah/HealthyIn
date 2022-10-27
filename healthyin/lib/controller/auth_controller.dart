@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:healthyin/screens/healthyin_main_page.dart';
-import 'package:healthyin/screens/healthyin_login_page.dart';
+import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
+import 'package:healthyin/screens/Login%20Page/healthyin_login_page.dart';
 
 //must accesible from all pages: globally
 class AuthController extends GetxController {

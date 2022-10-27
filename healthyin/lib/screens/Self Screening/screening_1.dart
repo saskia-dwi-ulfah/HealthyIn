@@ -1,0 +1,3 @@
+/*
+Nama, usia, jenis kelamin
+*/

@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/screens/healthyin_signup_page.dart';
+import 'package:healthyin/screens/Signup%20Page/healthyin_signup_page.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 
 class HealthyInLoginScreen extends StatefulWidget {
