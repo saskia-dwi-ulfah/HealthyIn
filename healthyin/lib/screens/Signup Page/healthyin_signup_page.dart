@@ -183,10 +183,10 @@ class HealthyInSignupScreen extends StatelessWidget {
                   style: GoogleFonts.lato(
                       fontSize: 16, color: Color.fromARGB(1000, 170, 170, 170)),
                 ),
-                SizedBox(height: 5), //Todo: tambahkan logo Google
+                SizedBox(height: 5),
                 GestureDetector(
                   onTap: () {
-                    AuthController.instance.signInAndLogInWithGoogle();
+                    //AuthController.instance.signInAndLogInWithGoogle();
                   },
                   child: Container(
                       height: 37,

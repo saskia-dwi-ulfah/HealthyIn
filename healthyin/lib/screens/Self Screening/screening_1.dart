@@ -14,6 +14,10 @@ class FirstPageScreening extends StatefulWidget {
 class _FirstPageScreeningState extends State<FirstPageScreening> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Halaman Pertama Screening'),
+      ),
+    );
   }
 }

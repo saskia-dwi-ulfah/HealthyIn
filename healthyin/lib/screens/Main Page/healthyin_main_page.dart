@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_1.dart';
 
 class HealthyInMainPage extends StatelessWidget {
   String email;
@@ -41,7 +43,28 @@ class HealthyInMainPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 200,
+              height: 30,
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.to(FirstPageScreening());
+              },
+              child: Container(
+                  width: w * 0.5,
+                  height: h * 0.08,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color.fromARGB(1000, 134, 22, 87)),
+                  child: Center(
+                    child: Text("Skrining Mandiri",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
+                  )),
+            ),
+            SizedBox(
+              height: 30,
             ),
             GestureDetector(
               onTap: () {
@@ -66,3 +89,7 @@ class HealthyInMainPage extends StatelessWidget {
         ));
   }
 }
+
+/*Question
+How to fetch argument from previous screen
+*/

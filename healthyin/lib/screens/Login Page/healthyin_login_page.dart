@@ -206,7 +206,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                 SizedBox(height: 5),
                 GestureDetector(
                   onTap: () {
-                    AuthController.instance.signInAndLogInWithGoogle();
+                    //AuthController.instance.signInAndLogInWithGoogle();
                   },
                   child: Container(
                       height: 37,
