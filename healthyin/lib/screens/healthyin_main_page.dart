@@ -10,6 +10,7 @@ class HealthyInMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(

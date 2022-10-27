@@ -1,17 +1,22 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthyin/screens/healthyin_main_page.dart';
 import 'package:healthyin/screens/healthyin_login_page.dart';
 
 //must accesible from all pages: globally
 class AuthController extends GetxController {
-  //AuthController.instance..
+  //AuthController.instance => To be able to call from other pages
   static final AuthController instance = Get.find();
-  //declare Firebase user
-  late Rx<User?>
-      _user; //coming from Firebase authentication and save user information
+  //coming from Firebase authentication and save user information
   FirebaseAuth auth = FirebaseAuth.instance;
+
+  //for Google sign in method
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  //declare Firebase user
+  late Rx<User?> _user;
 
   @override
   void onReady() {
@@ -32,7 +37,6 @@ class AuthController extends GetxController {
     }
   }
 
-  //Function for registration: data from SignUp page
   void register(String email, password) async {
     try {
       await auth.createUserWithEmailAndPassword(
@@ -66,7 +70,65 @@ class AuthController extends GetxController {
     }
   }
 
+  void signInAndLogInWithGoogle() async {
+    final GoogleSignInAccount? googleSignInAccount =
+        await googleSignIn.signIn();
+
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      try {
+        final UserCredential userCredential =
+            await auth.signInWithCredential(credential);
+
+        _user = userCredential.user as Rx<User?>;
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'account-exists-with-different-credential') {
+          Get.snackbar("About Login", "Login message",
+              backgroundColor: Colors.redAccent,
+              snackPosition: SnackPosition.BOTTOM,
+              titleText:
+                  Text("Login failed", style: TextStyle(color: Colors.white)),
+              messageText: Text(
+                e.toString(),
+                style: TextStyle(color: Colors.white),
+              ));
+        } else if (e.code == 'invalid-credential') {
+          Get.snackbar("About Login", "Login message",
+              backgroundColor: Colors.redAccent,
+              snackPosition: SnackPosition.BOTTOM,
+              titleText:
+                  Text("Login failed", style: TextStyle(color: Colors.white)),
+              messageText: Text(
+                e.toString(),
+                style: TextStyle(color: Colors.white),
+              )); // handle the error here
+        }
+      } catch (e) {
+        Get.snackbar("About Login", "Login message",
+            backgroundColor: Colors.redAccent,
+            snackPosition: SnackPosition.BOTTOM,
+            titleText:
+                Text("Login failed", style: TextStyle(color: Colors.white)),
+            messageText: Text(
+              e.toString(),
+              style: TextStyle(color: Colors.white),
+            )); // handle the error here
+      }
+    }
+  }
+
   void logout() async {
     await auth.signOut();
   }
 }
+
+/* To do:
+Fixing error Google Login
+*/

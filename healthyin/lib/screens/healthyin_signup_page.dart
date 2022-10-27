@@ -184,32 +184,37 @@ class HealthyInSignupScreen extends StatelessWidget {
                       fontSize: 16, color: Color.fromARGB(1000, 170, 170, 170)),
                 ),
                 SizedBox(height: 5), //Todo: tambahkan logo Google
-                Container(
-                    height: 37,
-                    width: 135,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: Offset(0, 1))
-                        ]),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Image.asset("assets/icons/logo_google.png"),
-                          Text(
-                            "Google",
-                            style: GoogleFonts.lato(
-                                textStyle: TextStyle(
-                                    fontSize: 18,
-                                    color: Color.fromARGB(1000, 18, 18, 18),
-                                    fontWeight: FontWeight.bold)),
-                          )
-                        ])),
+                GestureDetector(
+                  onTap: () {
+                    AuthController.instance.signInAndLogInWithGoogle();
+                  },
+                  child: Container(
+                      height: 37,
+                      width: 135,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 1,
+                                blurRadius: 1,
+                                offset: Offset(0, 1))
+                          ]),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Image.asset("assets/icons/logo_google.png"),
+                            Text(
+                              "Google",
+                              style: GoogleFonts.lato(
+                                  textStyle: TextStyle(
+                                      fontSize: 18,
+                                      color: Color.fromARGB(1000, 18, 18, 18),
+                                      fontWeight: FontWeight.bold)),
+                            )
+                          ])),
+                ),
               ]),
             ),
           ),
