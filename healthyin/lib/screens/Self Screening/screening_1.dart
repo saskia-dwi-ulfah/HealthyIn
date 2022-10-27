@@ -14,10 +14,25 @@ class FirstPageScreening extends StatefulWidget {
 class _FirstPageScreeningState extends State<FirstPageScreening> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Halaman Pertama Screening'),
-      ),
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+
+    return Column(
+      children: [
+        Column(
+          children: [
+            Container(
+              height: h,
+              width: w,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image:
+                          AssetImage("assets/images/self_screening_bg_x2.png"),
+                      fit: BoxFit.cover)),
+            )
+          ],
+        )
+      ],
     );
   }
 }
