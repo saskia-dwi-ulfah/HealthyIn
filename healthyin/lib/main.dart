@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:healthyin/screens/Self%20Screening/screening_1.dart';
 import 'package:healthyin/screens/Splash%20Screen/healthyin_splashscreen_page.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_1.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_7.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 
 Future<void> main() async {
@@ -21,6 +22,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'HealthyIn',
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        home: FirstPageScreening());
+        home: SeventhPageScreening());
   }
 }

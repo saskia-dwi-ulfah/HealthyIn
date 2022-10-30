@@ -246,3 +246,10 @@ class HealthyInSignupScreen extends StatelessWidget {
         ]));
   }
 }
+
+/*
+More improvement:
+- How to make code less repetition?
+- Handle google sign-in
+ */
+

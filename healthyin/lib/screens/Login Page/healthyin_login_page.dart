@@ -266,3 +266,9 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
         ]));
   }
 }
+
+/*
+More improvement:
+- How to make code less repetition?
+- Handle google sign-in
+ */

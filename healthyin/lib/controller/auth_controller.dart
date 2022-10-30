@@ -86,8 +86,6 @@ class AuthController extends GetxController {
       try {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
-
-        _user = userCredential.user as Rx<User?>;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           Get.snackbar("About Login", "Login message",
