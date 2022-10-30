@@ -1,5 +1,5 @@
 /*
-Show list of hospitals
+Chat with doctor
 */
 
 import 'package:flutter/material.dart';
@@ -7,8 +7,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SevereRecommendation extends StatelessWidget {
-  const SevereRecommendation({super.key});
+class MildRecommendation extends StatelessWidget {
+  const MildRecommendation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,12 @@ class SevereRecommendation extends StatelessWidget {
                 style: GoogleFonts.lato(
                     fontSize: 16, color: Color.fromARGB(1000, 170, 170, 170))),
             SizedBox(height: 10),
-            Image.asset("assets/images/severe_x2.png", scale: 2),
-            Text("Anda Berisiko Tinggi COVID-19",
+            Image.asset("assets/images/mild_x2.png", scale: 2),
+            Text("Anda Berisiko Ringan COVID-19",
                 style: GoogleFonts.lato(
                     fontSize: 20,
                     height: 1.5,
-                    color: Color.fromARGB(1000, 227, 23, 10),
+                    color: Color.fromARGB(1000, 132, 215, 157),
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             Text("Berikut hal-hal yang dapat dilakukan sebagai tindakan awal",
@@ -51,7 +51,7 @@ class SevereRecommendation extends StatelessWidget {
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             Text(
-                "Kami rekomendasikan Anda agar berkonsultasi langsung ke rumah sakit.",
+                "Kami rekomendasikan Anda untuk isolasi mandiri dan berkonsultasi jarak jauh dengan dokter.",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.lato(
                     fontSize: 16,
@@ -69,7 +69,7 @@ class SevereRecommendation extends StatelessWidget {
                           color: Color.fromARGB(1000, 4, 167, 119), width: 1),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12)))),
-                  child: Text("Lihat Daftar Rumah Sakit di D.I. Yogyakarta",
+                  child: Text("Konsultasi dengan Dokter Sekarang",
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
                               fontSize: 15,

@@ -7,8 +7,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SevereRecommendation extends StatelessWidget {
-  const SevereRecommendation({super.key});
+class ModerateRecommendation extends StatelessWidget {
+  const ModerateRecommendation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,12 @@ class SevereRecommendation extends StatelessWidget {
                 style: GoogleFonts.lato(
                     fontSize: 16, color: Color.fromARGB(1000, 170, 170, 170))),
             SizedBox(height: 10),
-            Image.asset("assets/images/severe_x2.png", scale: 2),
-            Text("Anda Berisiko Tinggi COVID-19",
+            Image.asset("assets/images/moderate_x2.png", scale: 2),
+            Text("Anda Berisiko Sedang COVID-19",
                 style: GoogleFonts.lato(
                     fontSize: 20,
                     height: 1.5,
-                    color: Color.fromARGB(1000, 227, 23, 10),
+                    color: Color.fromARGB(1000, 252, 193, 74),
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             Text("Berikut hal-hal yang dapat dilakukan sebagai tindakan awal",

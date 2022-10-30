@@ -80,6 +80,9 @@ flutter:
    - assets/images/self_screening_bg_x2.png
    - assets/images/login_top_right.png
    - assets/images/login_bottom_left.png
+   - assets/images/mild_x2.png
+   - assets/images/moderate_x2.png
+   - assets/images/severe_x2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
