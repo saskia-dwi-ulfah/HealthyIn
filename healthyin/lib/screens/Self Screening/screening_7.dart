@@ -15,14 +15,14 @@ class SeventhPageScreening extends StatefulWidget {
 
 class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   //for scoring logic
-  bool isPressed1 = false;
-  bool isPressed2 = false;
-  bool isPressed3 = false;
-  bool isPressed4 = false;
-  bool isPressed5 = false;
-  bool isPressed6 = false;
-  bool isPressed7 = false;
-  bool isPressed8 = false;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+  bool isChecked4 = false;
+  bool isChecked5 = false;
+  bool isChecked6 = false;
+  bool isChecked7 = false;
+  bool isChecked8 = false;
   int counter = 0;
 
   @override
@@ -50,7 +50,9 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                          fontSize: 25,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.5,
                           color: Color.fromARGB(1000, 255, 255, 255),
                           height: 1.5)))),
           //'COVID-19' text
@@ -62,248 +64,297 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                          fontSize: 25,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.5,
                           color: Color.fromARGB(1000, 255, 255, 255),
                           height: 1.5)))),
           //Spacing between (question and options) and 'Self Screening COVID-19' text
           SizedBox(height: 0.18 * h),
-          //Question starts here
-          Align(
+          /*All questions start here*/
+          Container(
+              height: 90,
+              width: w,
               alignment: Alignment.topCenter,
+              margin: EdgeInsets.only(left: 20, right: 20),
               child: Text(
-                  "6. Apakah Anda pernah mengalami gejala di bawah ini dalam 14 hari terakhir? (scroll hingga ke bawah)",
+                  "9. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                          fontSize: 15,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                           color: Color.fromARGB(1000, 18, 18, 18),
-                          height: 1.5)))),
-          SizedBox(height: 10),
-          //All options start here*/
+                          height: 1.4)))),
+          //Spacing between question and options
+          SizedBox(height: 0.024 * h),
+          /*All options start here*/
           Container(
             width: w,
-            height: 0.4 * h,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Color.fromARGB(1000, 241, 241, 241)),
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            height: 0.35 * h,
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  CheckboxListTile(
-                      value: isPressed1,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed1 = value!;
-                        });
-
-                        if (isPressed1 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text("Sakit perut",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed2,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed2 = value!;
-                        });
-
-                        if (isPressed2 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text("Muntah",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed3,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed3 = value!;
-                        });
-
-                        if (isPressed3 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text("Diare",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed4,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed4 = value!;
-                        });
-
-                        if (isPressed4 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text("Nyeri dada atau tekanan",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed5,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed5 = value!;
-                        });
-
-                        if (isPressed5 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text("Nyeri otot",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed6,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed6 = value!;
-                        });
-
-                        if (isPressed6 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text("Kehilangan indra perasa dan pembau",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed7,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed7 = value!;
-                        });
-
-                        if (isPressed7 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text(
-                          "Ruam pada kulit atau perubahan warna pada jari tangan atau kaki",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5)))),
-                  CheckboxListTile(
-                      value: isPressed8,
-                      activeColor: Color.fromARGB(1000, 134, 22, 87),
-                      onChanged: (value) {
-                        setState(() {
-                          isPressed8 = value!;
-                        });
-
-                        if (isPressed8 == false) {
-                          counter = counter - 2;
-                        } else {
-                          counter = counter + 2;
-                        }
-                        print(counter);
-                      },
-                      title: Text(
-                          "Kehilangan kemampuan untuk berbicara dan bergerak",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Color.fromARGB(1000, 18, 18, 18),
-                                  height: 1.5))))
-                ],
-              ),
-            ),
+                child: Column(children: [
+              //Option 1
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Sakit perut',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked1,
+                    onChanged: (value) {
+                      setState(() => isChecked1 = value!);
+                    },
+                  )),
+              //Option 2
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Muntah',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked2,
+                    onChanged: (value) {
+                      setState(() => isChecked2 = value!);
+                    },
+                  )),
+              //Option 3
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Diare',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked3,
+                    onChanged: (value) {
+                      setState(() => isChecked3 = value!);
+                    },
+                  )),
+              //Option 4
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Nyeri dada atau tekanan',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked4,
+                    onChanged: (value) {
+                      setState(() => isChecked4 = value!);
+                    },
+                  )),
+              //Option 5
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Nyeri otot',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked5,
+                    onChanged: (value) {
+                      setState(() => isChecked5 = value!);
+                    },
+                  )),
+              //Option 6
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Kehilangan indra perasa dan pembau',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked6,
+                    onChanged: (value) {
+                      setState(() => isChecked6 = value!);
+                    },
+                  )),
+              //Option 7
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Ruam pada kulit atau perubahan warna pada jari tangan atau kaki',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked7,
+                    onChanged: (value) {
+                      setState(() => isChecked7 = value!);
+                    },
+                  )),
+              //Option 8
+              Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Color.fromARGB(1000, 241, 241, 241),
+                  ),
+                  child: CheckboxListTile(
+                    title: Text(
+                      'Kehilangan kemampuan untuk berbicara dan bergerak',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4),
+                      ),
+                    ),
+                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: isChecked8,
+                    onChanged: (value) {
+                      setState(() => isChecked8 = value!);
+                    },
+                  ))
+            ])),
           ),
-          SizedBox(height: 10),
-          //'Sebelumnya' and 'Selanjutnya' buttons
+          //Spacing between (question and options) and buttons
+          SizedBox(height: 0.032 * h),
+          //Buttons
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
+              //Button Sebelumnya
+              Container(
+                width: 152,
+                height: 40,
+                child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
                       side: BorderSide(
-                          color: Color.fromARGB(1000, 4, 167, 119), width: 1),
+                          color: Color.fromARGB(1000, 4, 167, 119), width: 2),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12)))),
-                  child: Text("Sebelumnya",
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Sebelumnya',
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              fontSize: 15,
-                              color: Color.fromARGB(1000, 4, 167, 119),
-                              height: 1.5)))),
-              SizedBox(width: 10),
-              OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                          color: Color.fromARGB(1000, 4, 167, 119), width: 1),
+                        textStyle: TextStyle(
+                            color: Color.fromARGB(1000, 4, 167, 119),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            height: 1.5),
+                      ),
+                    )),
+              ),
+              //Button Selanjutnya
+              Container(
+                width: 152,
+                height: 40,
+                child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(1000, 4, 167, 119),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12)))),
-                  child: Text("Selanjutnya",
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Selanjutnya',
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
-                              fontSize: 15,
-                              color: Color.fromARGB(1000, 4, 167, 119),
-                              height: 1.5))))
+                        textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            height: 1.5),
+                      ),
+                    )),
+              ),
             ],
           )
         ]),
