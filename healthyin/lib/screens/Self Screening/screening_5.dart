@@ -5,6 +5,7 @@ Pertanyaan komorbid
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_6.dart';
 
 class FifthPageScreening extends StatefulWidget {
   const FifthPageScreening({super.key});
@@ -14,6 +15,9 @@ class FifthPageScreening extends StatefulWidget {
 }
 
 class _FifthPageScreeningState extends State<FifthPageScreening> {
+  //for scoring logic
+  int fifthPageScore = 0;
+
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
@@ -28,6 +32,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,
@@ -304,7 +309,6 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       ),
                     )),
               ),
-
               //Button Selanjutnya
               Container(
                 width: 152,
@@ -315,7 +319,21 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (isChecked1 == true ||
+                          isChecked2 == true ||
+                          isChecked3 == true ||
+                          isChecked4 == true ||
+                          isChecked5 == true ||
+                          isChecked6 == true ||
+                          isChecked7 == true) {
+                        fifthPageScore = 5;
+                      } else {
+                        fifthPageScore = 0;
+                      }
+                      Get.to(() => SixthPageScreening());
+                      print(fifthPageScore);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(

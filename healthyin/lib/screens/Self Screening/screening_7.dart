@@ -15,6 +15,8 @@ class SeventhPageScreening extends StatefulWidget {
 
 class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   //for scoring logic
+  int counter = 0;
+
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
@@ -23,7 +25,6 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   bool isChecked6 = false;
   bool isChecked7 = false;
   bool isChecked8 = false;
-  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,

@@ -1,9 +1,10 @@
 /*
 Nama, usia, jenis kelamin
 */
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_2.dart';
 
 class FirstPageScreening extends StatefulWidget {
   const FirstPageScreening({super.key});
@@ -13,6 +14,16 @@ class FirstPageScreening extends StatefulWidget {
 }
 
 class _FirstPageScreeningState extends State<FirstPageScreening> {
+  //temporary: for storing patient identity
+  String nama = "";
+  String gender = "";
+  int usia = 0;
+
+  //controller for name and age fields
+  var nameController = TextEditingController();
+  var ageController = TextEditingController();
+
+  // value for storing selected gender by user
   String selectedGender = "Pria";
 
   @override
@@ -89,6 +100,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                         color: Color.fromARGB(1000, 241, 241, 241),
                         borderRadius: BorderRadius.circular(12)),
                     child: TextField(
+                      controller: nameController,
                       decoration: InputDecoration(
                           hintText: "contoh: Joko Widodo",
                           hintStyle:
@@ -130,7 +142,6 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           setState(() {
                             selectedGender = newValue!;
                           });
-                          print(newValue);
                         },
                         items: [
                           DropdownMenuItem(child: Text("Pria"), value: "Pria"),
@@ -160,6 +171,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                         color: Color.fromARGB(1000, 241, 241, 241),
                         borderRadius: BorderRadius.circular(12)),
                     child: TextField(
+                      controller: ageController,
                       decoration: InputDecoration(
                           hintText: "contoh: 61",
                           hintStyle:
@@ -216,7 +228,15 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => SecondPageScreening());
+                      nama = nameController.text.trim();
+                      gender = selectedGender;
+                      usia = int.parse(ageController.text.trim());
+                      print(nama);
+                      print(gender);
+                      print(usia);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(

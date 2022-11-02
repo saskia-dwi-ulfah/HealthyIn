@@ -1,10 +1,11 @@
 /*
 Pertanyaan kontak dengan pasien COVID-19 14 hari terakhir
 */
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_3.dart';
 
 class SecondPageScreening extends StatefulWidget {
   const SecondPageScreening({super.key});
@@ -14,7 +15,9 @@ class SecondPageScreening extends StatefulWidget {
 }
 
 class _SecondPageScreeningState extends State<SecondPageScreening> {
-  TextEditingController _controller = TextEditingController();
+  //for scoring logic
+  int secondPageScore = 0;
+
   int valueChecked = 0;
 
   @override
@@ -23,6 +26,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,
@@ -181,7 +185,15 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (valueChecked == 1) {
+                        secondPageScore = 1;
+                      } else {
+                        secondPageScore = 0;
+                      }
+                      Get.to(() => ThirdPageScreening());
+                      print(secondPageScore);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(

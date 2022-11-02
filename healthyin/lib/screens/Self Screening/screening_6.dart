@@ -26,6 +26,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,

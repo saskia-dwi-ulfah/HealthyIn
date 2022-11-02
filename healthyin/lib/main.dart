@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:healthyin/screens/Login%20Page/healthyin_login_page.dart';
 import 'package:healthyin/screens/Splash%20Screen/healthyin_splashscreen_page.dart';
+import 'package:healthyin/screens/Login%20Page/healthyin_login_page.dart';
+import 'package:healthyin/screens/Signup%20Page/healthyin_signup_page.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_1.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_2.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_3.dart';
@@ -31,6 +32,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'HealthyIn',
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        home: FirstPageScreening());
+        home: SixthPageScreening());
   }
 }

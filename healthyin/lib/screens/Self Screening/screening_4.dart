@@ -1,10 +1,10 @@
 /*
 Pertanyaan suhu tubuh >38 derajat 
 */
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_5.dart';
 
 class FourthPageScreening extends StatefulWidget {
   const FourthPageScreening({super.key});
@@ -14,7 +14,10 @@ class FourthPageScreening extends StatefulWidget {
 }
 
 class _FourthPageScreeningState extends State<FourthPageScreening> {
-  int valueChecked = 1;
+  //for scoring logic
+  int fourthPageScore = 0;
+
+  int valueChecked = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,
@@ -110,6 +114,7 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
                     groupValue: valueChecked,
                     onChanged: (value) {
                       setState(() => valueChecked = value!);
+                      print(valueChecked);
                     },
                   )),
               //Option 2
@@ -137,6 +142,7 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
                     groupValue: valueChecked,
                     onChanged: (value) {
                       setState(() => valueChecked = value!);
+                      print(valueChecked);
                     },
                   )),
             ])),
@@ -181,7 +187,15 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (valueChecked == 1) {
+                        fourthPageScore = 2;
+                      } else {
+                        fourthPageScore = 0;
+                      }
+                      Get.to(() => FifthPageScreening());
+                      print(fourthPageScore);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(

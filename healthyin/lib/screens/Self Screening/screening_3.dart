@@ -1,9 +1,10 @@
 /*
 Pertanyaan kunjungan ke negara endemis
 */
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_4.dart';
 
 class ThirdPageScreening extends StatefulWidget {
   const ThirdPageScreening({super.key});
@@ -13,13 +14,18 @@ class ThirdPageScreening extends StatefulWidget {
 }
 
 class _ThirdPageScreeningState extends State<ThirdPageScreening> {
+  //for scoring logic
+  int thirdPageScore = 0;
+
   int valueChecked = 0;
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,
@@ -179,7 +185,15 @@ class _ThirdPageScreeningState extends State<ThirdPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (valueChecked == 1) {
+                        thirdPageScore = 1;
+                      } else {
+                        thirdPageScore = 0;
+                      }
+                      Get.to(() => FourthPageScreening());
+                      print(thirdPageScore);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(
