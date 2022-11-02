@@ -32,6 +32,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'HealthyIn',
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        home: SixthPageScreening());
+        home: SeventhPageScreening());
   }
 }

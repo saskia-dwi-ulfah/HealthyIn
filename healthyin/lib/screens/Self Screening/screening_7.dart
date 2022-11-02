@@ -15,7 +15,8 @@ class SeventhPageScreening extends StatefulWidget {
 
 class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   //for scoring logic
-  int counter = 0;
+  int tempScore = 0;
+  int seventhPageScore = 0;
 
   bool isChecked1 = false;
   bool isChecked2 = false;
@@ -25,6 +26,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   bool isChecked6 = false;
   bool isChecked7 = false;
   bool isChecked8 = false;
+  List<bool> symptomps = [];
 
   @override
   Widget build(BuildContext context) {
@@ -345,7 +347,31 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      symptomps = [
+                        isChecked1,
+                        isChecked2,
+                        isChecked3,
+                        isChecked4,
+                        isChecked5,
+                        isChecked6,
+                        isChecked7,
+                        isChecked8
+                      ];
+
+                      tempScore = symptomps
+                          .where((element) => element == true)
+                          .toList()
+                          .length;
+
+                      if (tempScore != 0) {
+                        seventhPageScore = tempScore * 2;
+                      } else {
+                        seventhPageScore = 0;
+                      }
+
+                      print(seventhPageScore);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(

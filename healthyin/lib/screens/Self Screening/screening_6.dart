@@ -5,6 +5,7 @@ Pertanyaan gejala 14 hari terakhir, layer 2
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_7.dart';
 
 class SixthPageScreening extends StatefulWidget {
   const SixthPageScreening({super.key});
@@ -14,11 +15,16 @@ class SixthPageScreening extends StatefulWidget {
 }
 
 class _SixthPageScreeningState extends State<SixthPageScreening> {
+  //for scoring logic
+  int tempScore = 0;
+  int sixthPageScore = 0;
+
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
   bool isChecked4 = false;
   bool isChecked5 = false;
+  List<bool> symptomps = [];
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +267,28 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      symptomps = [
+                        isChecked1,
+                        isChecked2,
+                        isChecked3,
+                        isChecked4,
+                        isChecked5
+                      ];
+                      tempScore = symptomps
+                          .where((element) => element == true)
+                          .toList()
+                          .length;
+
+                      if (tempScore != 0) {
+                        sixthPageScore = 3 + tempScore - 1;
+                      } else {
+                        sixthPageScore = 0;
+                      }
+
+                      Get.to(() => SeventhPageScreening());
+                      print(sixthPageScore);
+                    },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(
