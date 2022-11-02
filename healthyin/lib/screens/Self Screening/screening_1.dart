@@ -233,9 +233,6 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                       nama = nameController.text.trim();
                       gender = selectedGender;
                       usia = int.parse(ageController.text.trim());
-                      print(nama);
-                      print(gender);
-                      print(usia);
                     },
                     child: Text(
                       'Selanjutnya',

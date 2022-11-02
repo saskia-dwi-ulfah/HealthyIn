@@ -17,8 +17,8 @@ import 'package:healthyin/screens/Screening%20Result/recommendation_mild.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 
 Future<void> main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
@@ -32,6 +32,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'HealthyIn',
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        home: SeventhPageScreening());
+        home: HealthyInSplashScreen());
   }
 }

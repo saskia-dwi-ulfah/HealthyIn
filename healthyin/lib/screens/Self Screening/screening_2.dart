@@ -15,6 +15,9 @@ class SecondPageScreening extends StatefulWidget {
 }
 
 class _SecondPageScreeningState extends State<SecondPageScreening> {
+  //for storing score from corresponding page
+  var all_screening_scores_map = {};
+
   //for scoring logic
   int secondPageScore = 0;
 
@@ -163,7 +166,9 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
@@ -191,8 +196,9 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                       } else {
                         secondPageScore = 0;
                       }
-                      Get.to(() => ThirdPageScreening());
-                      print(secondPageScore);
+                      all_screening_scores_map['second_page'] = secondPageScore;
+                      Get.to(() => ThirdPageScreening(),
+                          arguments: all_screening_scores_map);
                     },
                     child: Text(
                       'Selanjutnya',

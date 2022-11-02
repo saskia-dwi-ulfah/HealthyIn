@@ -14,6 +14,9 @@ class ThirdPageScreening extends StatefulWidget {
 }
 
 class _ThirdPageScreeningState extends State<ThirdPageScreening> {
+  //catch argument from previous screen
+  var data = Get.arguments;
+
   //for scoring logic
   int thirdPageScore = 0;
 
@@ -162,7 +165,9 @@ class _ThirdPageScreeningState extends State<ThirdPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
@@ -191,8 +196,8 @@ class _ThirdPageScreeningState extends State<ThirdPageScreening> {
                       } else {
                         thirdPageScore = 0;
                       }
-                      Get.to(() => FourthPageScreening());
-                      print(thirdPageScore);
+                      data['third_page'] = thirdPageScore;
+                      Get.to(() => FourthPageScreening(), arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',

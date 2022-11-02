@@ -15,6 +15,9 @@ class FifthPageScreening extends StatefulWidget {
 }
 
 class _FifthPageScreeningState extends State<FifthPageScreening> {
+  //catch argument from previous screen
+  var data = Get.arguments;
+
   //for scoring logic
   int fifthPageScore = 0;
 
@@ -297,7 +300,9 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
@@ -331,8 +336,8 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       } else {
                         fifthPageScore = 0;
                       }
-                      Get.to(() => SixthPageScreening());
-                      print(fifthPageScore);
+                      data['fifth_page'] = fifthPageScore;
+                      Get.to(() => SixthPageScreening(), arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',

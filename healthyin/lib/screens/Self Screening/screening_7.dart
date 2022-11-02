@@ -1,10 +1,12 @@
 /*
 Pertanyaan gejala 14 hari terakhir, layer 3
 */
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/screens/Screening%20Result/recommendation_mild.dart';
+import 'package:healthyin/screens/Screening%20Result/recommendation_moderate.dart';
+import 'package:healthyin/screens/Screening%20Result/recommendation_severe.dart';
 
 class SeventhPageScreening extends StatefulWidget {
   const SeventhPageScreening({super.key});
@@ -14,9 +16,13 @@ class SeventhPageScreening extends StatefulWidget {
 }
 
 class _SeventhPageScreeningState extends State<SeventhPageScreening> {
+  //catch argument from previous screen
+  var data = Get.arguments;
+
   //for scoring logic
   int tempScore = 0;
   int seventhPageScore = 0;
+  int result = 0;
 
   bool isChecked1 = false;
   bool isChecked2 = false;
@@ -325,7 +331,9 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
@@ -370,7 +378,18 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         seventhPageScore = 0;
                       }
 
-                      print(seventhPageScore);
+                      data['seventh_page'] = seventhPageScore;
+
+                      result =
+                          data.values.reduce((sum, element) => sum + element);
+
+                      if (result < 5) {
+                        Get.to(() => MildRecommendation());
+                      } else if (result >= 5 && result <= 7) {
+                        Get.to(() => ModerateRecommendation());
+                      } else if (result > 7) {
+                        Get.to(() => SevereRecommendation());
+                      }
                     },
                     child: Text(
                       'Selanjutnya',
