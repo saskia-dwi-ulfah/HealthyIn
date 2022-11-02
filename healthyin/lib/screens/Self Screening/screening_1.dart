@@ -13,12 +13,15 @@ class FirstPageScreening extends StatefulWidget {
 }
 
 class _FirstPageScreeningState extends State<FirstPageScreening> {
+  String selectedGender = "Pria";
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: h,
         width: w,
@@ -62,14 +65,13 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
           Container(
               width: w,
               height: 90 + 0.024 * h + 0.35 * h,
-              color: Colors.amber,
               margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
               child: Column(
                 children: [
+                  // "1. Nama lengkap"
                   Container(
                     height: 30,
                     width: w,
-                    color: Colors.blueAccent,
                     child: Text("1. Nama lengkap",
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
@@ -79,16 +81,36 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                                 height: 1.4))),
                   ),
                   SizedBox(height: 5),
+                  // Input for "Nama lengkap"
                   Container(
-                    height: 40,
+                    height: 55,
                     width: w,
-                    color: Colors.blueGrey,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(1000, 241, 241, 241),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: "contoh: Joko Widodo",
+                          hintStyle:
+                              TextStyle(fontSize: 16, color: Colors.grey[500]),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  width: 1.5)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12))),
+                    ),
                   ),
                   SizedBox(height: 10),
+                  // "2. Jenis kelamin"
                   Container(
                     height: 30,
                     width: w,
-                    color: Colors.blueAccent,
                     child: Text("2. Jenis kelamin",
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
@@ -98,16 +120,29 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                                 height: 1.4))),
                   ),
                   SizedBox(height: 5),
+                  // Dropdown for "Gender"
                   Container(
-                    height: 40,
+                    height: 55,
                     width: w,
-                    color: Colors.blueGrey,
+                    child: DropdownButton(
+                        value: selectedGender,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedGender = newValue!;
+                          });
+                          print(newValue);
+                        },
+                        items: [
+                          DropdownMenuItem(child: Text("Pria"), value: "Pria"),
+                          DropdownMenuItem(
+                              child: Text("Wanita"), value: "Wanita")
+                        ]),
                   ),
                   SizedBox(height: 10),
+                  // "3. Usia"
                   Container(
                     height: 30,
                     width: w,
-                    color: Colors.blueAccent,
                     child: Text("3. Usia",
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
@@ -117,44 +152,31 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                                 height: 1.4))),
                   ),
                   SizedBox(height: 5),
+                  // Input for "Usia"
                   Container(
-                    height: 40,
+                    height: 55,
                     width: w,
-                    color: Colors.blueGrey,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(1000, 241, 241, 241),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: "contoh: 61",
+                          hintStyle:
+                              TextStyle(fontSize: 16, color: Colors.grey[500]),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  width: 1.5)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12))),
+                    ),
                   )
-
-                  /*                 Container(
-                      alignment: Alignment.centerLeft,
-                      //margin: EdgeInsets.only(left: 50, right: 50),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //Text Input
-                          TextField(
-                            decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide: BorderSide(
-                                    width: 1.5,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 12.5, horizontal: 20),
-                                filled: true,
-                                hintStyle: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color:
-                                            Color.fromARGB(232, 134, 134, 134),
-                                        height: 1)),
-                                hintText: "Nama Lengkap",
-                                fillColor: Colors.white70),
-                          )
-                        ],
-                      ))*/
                 ],
               )),
           SizedBox(height: 0.032 * h),
@@ -208,62 +230,6 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
               ),
             ],
           )
-          /*// Size Box
-          SizedBox(height: 0.143 * h),
-
-          // "Nama"
-          Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: 45, right: 45),
-              child: Text("1. Siapakah nama anda?",
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.lato(
-                      textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Color.fromARGB(1000, 18, 18, 18),
-                          height: 1.4)))),
-
-          // Size Box
-          SizedBox(height: 0.03 * h),
-
-          // Name Box
-          Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: 50, right: 50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //Text Input
-                  TextField(
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            width: 1.5,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 12.5, horizontal: 20),
-                        filled: true,
-                        hintStyle: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Color.fromARGB(232, 134, 134, 134),
-                                height: 1)),
-                        hintText: "Nama Lengkap",
-                        fillColor: Colors.white70),
-                  )
-                ],
-              )),
-
-          // Size Box
-          SizedBox(height: 0.37 * h),*/
-
-          //Button Selanjutnya
         ]),
       ),
     );
