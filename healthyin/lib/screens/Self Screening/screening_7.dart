@@ -22,7 +22,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   //for scoring logic
   int tempScore = 0;
   int seventhPageScore = 0;
-  int result = 0;
+  int final_score = 0;
 
   bool isChecked1 = false;
   bool isChecked2 = false;
@@ -380,14 +380,20 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
 
                       data['seventh_page'] = seventhPageScore;
 
-                      result =
-                          data.values.reduce((sum, element) => sum + element);
+                      print(data);
 
-                      if (result < 5) {
+                      final_score = data['second_page'] +
+                          data['third_page'] +
+                          data['fourth_page'] +
+                          data['fifth_page'] +
+                          data['sixth_page'] +
+                          data['seventh_page'];
+
+                      if (final_score < 5) {
                         Get.to(() => MildRecommendation());
-                      } else if (result >= 5 && result <= 7) {
+                      } else if (final_score >= 5 && final_score <= 7) {
                         Get.to(() => ModerateRecommendation());
-                      } else if (result > 7) {
+                      } else if (final_score > 7) {
                         Get.to(() => SevereRecommendation());
                       }
                     },

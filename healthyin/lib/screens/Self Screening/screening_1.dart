@@ -14,10 +14,8 @@ class FirstPageScreening extends StatefulWidget {
 }
 
 class _FirstPageScreeningState extends State<FirstPageScreening> {
-  //temporary: for storing patient identity
-  String nama = "";
-  String gender = "";
-  int usia = 0;
+  //for storing data from corresponding page
+  var all_data = {};
 
   //controller for name and age fields
   var nameController = TextEditingController();
@@ -229,10 +227,11 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () {
-                      Get.to(() => SecondPageScreening());
-                      nama = nameController.text.trim();
-                      gender = selectedGender;
-                      usia = int.parse(ageController.text.trim());
+                      all_data['email'] = Get.arguments;
+                      all_data['nama'] = nameController.text.trim();
+                      all_data['gender'] = selectedGender;
+                      all_data['usia'] = int.parse(ageController.text.trim());
+                      Get.to(() => SecondPageScreening(), arguments: all_data);
                     },
                     child: Text(
                       'Selanjutnya',

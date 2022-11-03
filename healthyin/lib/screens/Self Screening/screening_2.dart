@@ -16,7 +16,7 @@ class SecondPageScreening extends StatefulWidget {
 
 class _SecondPageScreeningState extends State<SecondPageScreening> {
   //for storing score from corresponding page
-  var all_screening_scores_map = {};
+  var data = Get.arguments;
 
   //for scoring logic
   int secondPageScore = 0;
@@ -196,9 +196,8 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                       } else {
                         secondPageScore = 0;
                       }
-                      all_screening_scores_map['second_page'] = secondPageScore;
-                      Get.to(() => ThirdPageScreening(),
-                          arguments: all_screening_scores_map);
+                      data['second_page'] = secondPageScore;
+                      Get.to(() => ThirdPageScreening(), arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',
