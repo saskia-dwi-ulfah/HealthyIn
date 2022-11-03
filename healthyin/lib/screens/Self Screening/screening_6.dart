@@ -18,6 +18,13 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
   //catch argument from previous screen
   var data = Get.arguments;
 
+  //question8
+  var question8 =
+      "8. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?";
+
+  //answer choosed
+  Set<String> answerChoosed = {};
+
   //for scoring logic
   int tempScore = 0;
   int sixthPageScore = 0;
@@ -82,8 +89,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                  "8. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?",
+              child: Text(question8,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
@@ -123,6 +129,12 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                     value: isChecked1,
                     onChanged: (value) {
                       setState(() => isChecked1 = value!);
+
+                      if (isChecked1 == true) {
+                        answerChoosed.add("Masalah pernapasan");
+                      } else {
+                        answerChoosed.remove("Masalah pernapasan");
+                      }
                     },
                   )),
               //Option 2
@@ -149,6 +161,12 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                     value: isChecked2,
                     onChanged: (value) {
                       setState(() => isChecked2 = value!);
+
+                      if (isChecked2 == true) {
+                        answerChoosed.add("Batuk kering");
+                      } else {
+                        answerChoosed.remove("Batuk kering");
+                      }
                     },
                   )),
               //Option 3
@@ -175,6 +193,12 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                     value: isChecked3,
                     onChanged: (value) {
                       setState(() => isChecked3 = value!);
+
+                      if (isChecked3 == true) {
+                        answerChoosed.add("Sakit tenggorokan");
+                      } else {
+                        answerChoosed.remove("Sakit tenggorokan");
+                      }
                     },
                   )),
               //Option 4
@@ -201,6 +225,12 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                     value: isChecked4,
                     onChanged: (value) {
                       setState(() => isChecked4 = value!);
+
+                      if (isChecked4 == true) {
+                        answerChoosed.add("Pilek");
+                      } else {
+                        answerChoosed.remove("Pilek");
+                      }
                     },
                   )),
               //Option 5
@@ -227,6 +257,12 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                     value: isChecked5,
                     onChanged: (value) {
                       setState(() => isChecked5 = value!);
+
+                      if (isChecked5 == true) {
+                        answerChoosed.add("Lemah, letih, lesu");
+                      } else {
+                        answerChoosed.remove("Lemah, letih, lesu");
+                      }
                     },
                   )),
             ])),
@@ -291,7 +327,12 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                         sixthPageScore = 0;
                       }
 
-                      data['sixth_page'] = sixthPageScore;
+                      data['sixth_page'] = {
+                        'question': question8,
+                        'answer': answerChoosed,
+                        'score': sixthPageScore
+                      };
+
                       Get.to(() => SeventhPageScreening(), arguments: data);
                     },
                     child: Text(

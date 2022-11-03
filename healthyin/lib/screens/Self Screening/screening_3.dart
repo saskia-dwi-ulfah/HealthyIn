@@ -17,6 +17,13 @@ class _ThirdPageScreeningState extends State<ThirdPageScreening> {
   //catch argument from previous screen
   var data = Get.arguments;
 
+  //question 5
+  String question5 =
+      "5. Apakah Anda pernah berkunjung atau tinggal ke negara atau daerah endemis COVID-19 dalam 14 hari terakhir?";
+
+//answer choosed
+  String answer5 = "";
+
   //for scoring logic
   int thirdPageScore = 0;
 
@@ -75,8 +82,7 @@ class _ThirdPageScreeningState extends State<ThirdPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                  "5. Apakah Anda pernah berkunjung atau tinggal ke negara atau daerah endemis COVID-19 dalam 14 hari terakhir?",
+              child: Text(question5,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
@@ -193,10 +199,18 @@ class _ThirdPageScreeningState extends State<ThirdPageScreening> {
                     onPressed: () {
                       if (valueChecked == 1) {
                         thirdPageScore = 1;
+                        answer5 = "Ya";
                       } else {
                         thirdPageScore = 0;
+                        answer5 = "Tidak";
                       }
-                      data['third_page'] = thirdPageScore;
+
+                      data['third_page'] = {
+                        'question': question5,
+                        'answer': answer5,
+                        'score': thirdPageScore
+                      };
+
                       Get.to(() => FourthPageScreening(), arguments: data);
                     },
                     child: Text(

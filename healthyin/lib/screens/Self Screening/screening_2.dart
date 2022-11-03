@@ -18,6 +18,13 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
   //for storing score from corresponding page
   var data = Get.arguments;
 
+  //question 4
+  String question4 =
+      "4. Apakah Anda pernah kontak dengan pasien positif COVID-19 atau berada satu ruangan yang sama atau kontak dalam 1 meter pada 14 hari terakhir? ";
+
+//answer choosed
+  String answer4 = "";
+
   //for scoring logic
   int secondPageScore = 0;
 
@@ -76,8 +83,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                  "4. Apakah Anda pernah kontak dengan pasien positif COVID-19 atau berada satu ruangan yang sama atau kontak dalam 1 meter pada 14 hari terakhir? ",
+              child: Text(question4,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
@@ -193,10 +199,18 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                     onPressed: () {
                       if (valueChecked == 1) {
                         secondPageScore = 1;
+                        answer4 = "Ya";
                       } else {
                         secondPageScore = 0;
+                        answer4 = "Tidak";
                       }
-                      data['second_page'] = secondPageScore;
+
+                      data['second_page'] = {
+                        'question': question4,
+                        'answer': answer4,
+                        'score': secondPageScore
+                      };
+
                       Get.to(() => ThirdPageScreening(), arguments: data);
                     },
                     child: Text(

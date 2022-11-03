@@ -17,6 +17,13 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
   //catch argument from previous screen
   var data = Get.arguments;
 
+  //question 6
+  var question6 =
+      "6. Apakah Anda memiliki riwayat suhu tubuh lebih dari 38°C dalam 14 hari terakhir?";
+
+  //answer choosed
+  String answer6 = "";
+
   //for scoring logic
   int fourthPageScore = 0;
 
@@ -75,8 +82,7 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                  "6. Apakah Anda memiliki riwayat suhu tubuh lebih dari 38°C dalam 14 hari terakhir?",
+              child: Text(question6,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
@@ -195,10 +201,17 @@ class _FourthPageScreeningState extends State<FourthPageScreening> {
                     onPressed: () {
                       if (valueChecked == 1) {
                         fourthPageScore = 2;
+                        answer6 = "Ya";
                       } else {
                         fourthPageScore = 0;
+                        answer6 = "Tidak";
                       }
-                      data['fourth_page'] = fourthPageScore;
+                      data['fourth_page'] = {
+                        'question': question6,
+                        'answer': answer6,
+                        'score': fourthPageScore
+                      };
+
                       Get.to(() => FifthPageScreening(), arguments: data);
                     },
                     child: Text(

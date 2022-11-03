@@ -227,10 +227,13 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () {
-                      all_data['email'] = Get.arguments;
-                      all_data['nama'] = nameController.text.trim();
-                      all_data['gender'] = selectedGender;
-                      all_data['usia'] = int.parse(ageController.text.trim());
+                      all_data['identity'] = {
+                        'email': Get.arguments,
+                        'nama': nameController.text.trim(),
+                        'gender': selectedGender,
+                        'usia': int.parse(ageController.text.trim())
+                      };
+
                       Get.to(() => SecondPageScreening(), arguments: all_data);
                     },
                     child: Text(

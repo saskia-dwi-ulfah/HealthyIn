@@ -18,6 +18,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
   //catch argument from previous screen
   var data = Get.arguments;
 
+  //question 7
+  var question7 = "7. Apakah Anda memiliki komorbid/penyakit bawaan berikut?";
+
+  //answer choosed
+  Set<String> answerChoosed = {};
+
   //for scoring logic
   int fifthPageScore = 0;
 
@@ -83,8 +89,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                  "7. Apakah Anda memiliki komorbid/penyakit bawaan berikut?",
+              child: Text(question7,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
@@ -124,6 +129,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked1,
                     onChanged: (value) {
                       setState(() => isChecked1 = value!);
+
+                      if (isChecked1 == true) {
+                        answerChoosed.add("Hipertensi");
+                      } else {
+                        answerChoosed.remove("Hipertensi");
+                      }
                     },
                   )),
               //Option 2
@@ -150,6 +161,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked2,
                     onChanged: (value) {
                       setState(() => isChecked2 = value!);
+
+                      if (isChecked2 == true) {
+                        answerChoosed.add("Diabetes melitus");
+                      } else {
+                        answerChoosed.remove("Diabetes melitus");
+                      }
                     },
                   )),
               //Option 3
@@ -176,6 +193,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked3,
                     onChanged: (value) {
                       setState(() => isChecked3 = value!);
+
+                      if (isChecked3 == true) {
+                        answerChoosed.add("Penyakit jantung");
+                      } else {
+                        answerChoosed.remove("Penyakit jantung");
+                      }
                     },
                   )),
               //Option 4
@@ -202,6 +225,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked4,
                     onChanged: (value) {
                       setState(() => isChecked4 = value!);
+
+                      if (isChecked4 == true) {
+                        answerChoosed.add("Penyakit gangguan pernapasan");
+                      } else {
+                        answerChoosed.remove("Penyakit gangguan pernapasan");
+                      }
                     },
                   )),
               //Option 5
@@ -228,6 +257,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked5,
                     onChanged: (value) {
                       setState(() => isChecked5 = value!);
+
+                      if (isChecked5 == true) {
+                        answerChoosed.add("Penyakit ginjal kronis");
+                      } else {
+                        answerChoosed.remove("Penyakit ginjal kronis");
+                      }
                     },
                   )),
               //Option 6
@@ -254,6 +289,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked6,
                     onChanged: (value) {
                       setState(() => isChecked6 = value!);
+
+                      if (isChecked6 == true) {
+                        answerChoosed.add("Penyakit gangguan syaraf");
+                      } else {
+                        answerChoosed.remove("Penyakit gangguan syaraf");
+                      }
                     },
                   )),
               //Option 7
@@ -280,6 +321,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     value: isChecked7,
                     onChanged: (value) {
                       setState(() => isChecked7 = value!);
+
+                      if (isChecked7 == true) {
+                        answerChoosed.add("Penyakit liver");
+                      } else {
+                        answerChoosed.remove("Penyakit liver");
+                      }
                     },
                   )),
             ])),
@@ -336,7 +383,13 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       } else {
                         fifthPageScore = 0;
                       }
-                      data['fifth_page'] = fifthPageScore;
+
+                      data['fifth_page'] = {
+                        'question': question7,
+                        'answer': answerChoosed,
+                        'score': fifthPageScore
+                      };
+
                       Get.to(() => SixthPageScreening(), arguments: data);
                     },
                     child: Text(

@@ -1,12 +1,14 @@
 /*
 Pertanyaan gejala 14 hari terakhir, layer 3
 */
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/screens/Screening%20Result/recommendation_mild.dart';
 import 'package:healthyin/screens/Screening%20Result/recommendation_moderate.dart';
 import 'package:healthyin/screens/Screening%20Result/recommendation_severe.dart';
+import 'dart:convert' show json;
 
 class SeventhPageScreening extends StatefulWidget {
   const SeventhPageScreening({super.key});
@@ -18,6 +20,13 @@ class SeventhPageScreening extends StatefulWidget {
 class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   //catch argument from previous screen
   var data = Get.arguments;
+
+  //question 9
+  var question9 =
+      "9. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?";
+
+  //answer choosed
+  Set<String> answerChoosed = {};
 
   //for scoring logic
   int tempScore = 0;
@@ -33,6 +42,10 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   bool isChecked7 = false;
   bool isChecked8 = false;
   List<bool> symptomps = [];
+
+  //for storing data to the database
+  CollectionReference screeningHistory =
+      FirebaseFirestore.instance.collection('self_screening_history');
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +100,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                  "9. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?",
+              child: Text(question9,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: TextStyle(
@@ -128,6 +140,12 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked1,
                     onChanged: (value) {
                       setState(() => isChecked1 = value!);
+
+                      if (isChecked1 == true) {
+                        answerChoosed.add("Sakit perut");
+                      } else {
+                        answerChoosed.remove("Sakit perut");
+                      }
                     },
                   )),
               //Option 2
@@ -154,6 +172,12 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked2,
                     onChanged: (value) {
                       setState(() => isChecked2 = value!);
+
+                      if (isChecked2 == true) {
+                        answerChoosed.add("Muntah");
+                      } else {
+                        answerChoosed.remove("Muntah");
+                      }
                     },
                   )),
               //Option 3
@@ -180,6 +204,12 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked3,
                     onChanged: (value) {
                       setState(() => isChecked3 = value!);
+
+                      if (isChecked3 == true) {
+                        answerChoosed.add("Diare");
+                      } else {
+                        answerChoosed.remove("Diare");
+                      }
                     },
                   )),
               //Option 4
@@ -206,6 +236,12 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked4,
                     onChanged: (value) {
                       setState(() => isChecked4 = value!);
+
+                      if (isChecked4 == true) {
+                        answerChoosed.add("Nyeri dada atau tekanan");
+                      } else {
+                        answerChoosed.remove("Nyeri dada atau tekanan");
+                      }
                     },
                   )),
               //Option 5
@@ -232,6 +268,12 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked5,
                     onChanged: (value) {
                       setState(() => isChecked5 = value!);
+
+                      if (isChecked5 == true) {
+                        answerChoosed.add("Nyeri otot");
+                      } else {
+                        answerChoosed.remove("Nyeri otot");
+                      }
                     },
                   )),
               //Option 6
@@ -258,6 +300,13 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked6,
                     onChanged: (value) {
                       setState(() => isChecked6 = value!);
+
+                      if (isChecked6 == true) {
+                        answerChoosed.add("Kehilangan indra perasa dan pembau");
+                      } else {
+                        answerChoosed
+                            .remove("Kehilangan indra perasa dan pembau");
+                      }
                     },
                   )),
               //Option 7
@@ -284,6 +333,14 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked7,
                     onChanged: (value) {
                       setState(() => isChecked7 = value!);
+
+                      if (isChecked7 == true) {
+                        answerChoosed.add(
+                            "Ruam pada kulit atau perubahan warna pada jari tangan atau kaki");
+                      } else {
+                        answerChoosed.remove(
+                            "Ruam pada kulit atau perubahan warna pada jari tangan atau kaki");
+                      }
                     },
                   )),
               //Option 8
@@ -310,6 +367,14 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                     value: isChecked8,
                     onChanged: (value) {
                       setState(() => isChecked8 = value!);
+
+                      if (isChecked8 == true) {
+                        answerChoosed.add(
+                            "Kehilangan kemampuan untuk berbicara dan bergerak");
+                      } else {
+                        answerChoosed.remove(
+                            "Kehilangan kemampuan untuk berbicara dan bergerak");
+                      }
                     },
                   ))
             ])),
@@ -355,7 +420,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       symptomps = [
                         isChecked1,
                         isChecked2,
@@ -378,16 +443,55 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         seventhPageScore = 0;
                       }
 
-                      data['seventh_page'] = seventhPageScore;
+                      data['seventh_page'] = {
+                        'question': question9,
+                        'answer': answerChoosed,
+                        'score': seventhPageScore
+                      };
 
-                      print(data);
+                      print(json.encode(data));
 
-                      final_score = data['second_page'] +
-                          data['third_page'] +
-                          data['fourth_page'] +
-                          data['fifth_page'] +
-                          data['sixth_page'] +
-                          data['seventh_page'];
+                      //save data to Firestore
+                      /* await screeningHistory
+                          .add(
+                              /*'email': data['identity']['email'].toString(),
+                        'nama': data['identity']['nama'].toString(),
+                        'gender': data['identity']['gender'].toString(),
+                        'usia': data['identity']['usia'],
+                        'second_page_question':
+                            data['second_page']['question'].toString(),
+                        'second_page_answer': data['second_page']['answer'],
+                        'second_page_score': data['second_page']['score'],
+                        'third_page_question':
+                            data['third_page']['question'].toString(),
+                        'third_page_answer': data['third_page']['answer'],
+                        'third_page_score': data['third_page']['score'],
+                        'fourth_page_question':
+                            data['fourth_page']['question'].toString(),
+                        'fourth_page_answer': data['fourth_page']['answer'],
+                        'fourth_page_score': data['fourth_page']['score'],
+                        'fifth_page_question':
+                            data['fifth_page']['question'].toString(),
+                        'fifth_page_answer': data['fifth_page']['answer'],
+                        'fifth_page_score': data['fifth_page']['score'],
+                        'sixth_page_question':
+                            data['sixth_page']['question'].toString(),
+                        'sixth_page_answer': data['sixth_page']['answer'],
+                        'sixth_page_score': data['sixth_page']['score'],
+                        'seventh_page_question':
+                            data['seventh_page']['question'].toString(),
+                        'seventh_page_answer': data['seventh_page']['answer'],
+                        'seventh_page_score': data['seventh_page']['score']*/
+                              Map<String, dynamic>.from(data))
+                          .then(
+                              (value) => print('Data successfully submitted'));*/
+
+                      /* final_score = data['second_page']['score'] +
+                          data['third_page']['score'] +
+                          data['fourth_page']['score'] +
+                          data['fifth_page']['score'] +
+                          data['sixth_page']['score'] +
+                          data['seventh_page']['score'];
 
                       if (final_score < 5) {
                         Get.to(() => MildRecommendation());
@@ -395,7 +499,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         Get.to(() => ModerateRecommendation());
                       } else if (final_score > 7) {
                         Get.to(() => SevereRecommendation());
-                      }
+                      }*/
                     },
                     child: Text(
                       'Selanjutnya',

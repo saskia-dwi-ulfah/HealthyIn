@@ -18,6 +18,7 @@ class HealthyInSignupScreen extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Column(children: [
           Container(
