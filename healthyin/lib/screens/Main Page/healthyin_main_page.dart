@@ -47,7 +47,7 @@ class HealthyInMainPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(FirstPageScreening(), arguments: email);
+                Get.to(() => FirstPageScreening(), arguments: email);
               },
               child: Container(
                   width: w * 0.5,
