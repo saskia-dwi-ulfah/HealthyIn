@@ -88,8 +88,8 @@ class ModerateRecommendation extends StatelessWidget {
               color: Colors.white,
               child: OutlinedButton(
                   onPressed: () async {
-                    //final pdfFile = await PdfParagraphApi.generate();
-                    //PdfApi.openFile(pdfFile);
+                    final pdfFile = await PdfParagraphApi.generate(data);
+                    PdfApi.openFile(pdfFile);
                   },
                   style: OutlinedButton.styleFrom(
                       side: const BorderSide(

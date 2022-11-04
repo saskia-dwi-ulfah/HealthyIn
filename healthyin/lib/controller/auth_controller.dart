@@ -34,9 +34,6 @@ class AuthController extends GetxController {
     // ignore: duplicate_ignore, duplicate_ignore
     if (user == null) {
       //nobody tries to login
-      // ignore: avoid_print
-      print("login page");
-      // ignore: prefer_const_constructors
       Get.offAll(() => HealthyInLoginScreen());
     } else {
       Get.offAll(() => HealthyInMainPage(email: user.email!));
@@ -90,6 +87,7 @@ class AuthController extends GetxController {
       );
 
       try {
+        // ignore: unused_local_variable
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
       } on FirebaseAuthException catch (e) {

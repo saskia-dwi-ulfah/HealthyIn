@@ -45,6 +45,7 @@ dependencies:
   get:
   google_fonts:
   google_sign_in:
+  open_file:
   path_provider:
   pdf:
   syncfusion_flutter_pdf:
@@ -75,6 +76,7 @@ flutter:
   assets:
    - assets/icons/logo_google.png
    - assets/icons/splashscreen_tagline.png
+   - assets/icons/splashscreen_tagline.svg
    - assets/icons/splashscreen_tagline_x2.png
    - assets/icons/logo_healthyin.png
    - assets/icons/logo_healthyin_x2.png

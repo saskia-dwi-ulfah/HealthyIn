@@ -1,36 +1,35 @@
-/*import 'dart:io';
-
+import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
-import 'package:healthyin/api/pdf_api.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
 
 class PdfParagraphApi {
-  static Future<File> generate() async {
+  static Future<File> generate(dynamic data) async {
+    final headerLogo =
+        await rootBundle.loadString('assets/icons/splashscreen_tagline.svg');
     final pdf = Document();
-
-    final customFont =
-        Font.ttf(await rootBundle.load('assets/OpenSans-Regular.ttf'));
 
     pdf.addPage(
       MultiPage(
         build: (context) => <Widget>[
-          buildCustomHeader(),
+          buildLogo(headerLogo),
           SizedBox(height: 0.5 * PdfPageFormat.cm),
-          Paragraph(
-            text:
-                'This is my custom font that displays also characters such as €, Ł, ...',
-            style: TextStyle(font: customFont, fontSize: 20),
-          ),
-          buildCustomHeadline(),
-          buildLink(),
-          ...buildBulletPoints(),
-          Header(child: Text('My Headline')),
-          Paragraph(text: LoremText().paragraph(60)),
-          Paragraph(text: LoremText().paragraph(60)),
-          Paragraph(text: LoremText().paragraph(60)),
-          Paragraph(text: LoremText().paragraph(60)),
-          Paragraph(text: LoremText().paragraph(60)),
+          Center(
+              child: Text("Hasil Self Screening",
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: PdfColors.black))),
+          buildQuestion('1. Identitas diri: '),
+          buildQuestion(data['second_page']['question']),
+          buildQuestion(data['third_page']['question']),
+          buildQuestion(data['fourth_page']['question']),
+          buildQuestion(data['fifth_page']['question']),
+          buildQuestion(data['sixth_page']['question']),
+          buildQuestion(data['seventh_page']['question']),
+          SizedBox(height: 0.1 * PdfPageFormat.cm),
         ],
         footer: (context) {
           final text = 'Page ${context.pageNumber} of ${context.pagesCount}';
@@ -46,53 +45,59 @@ class PdfParagraphApi {
         },
       ),
     );
-    return PdfApi.saveDocument(name: 'my_example.pdf', pdf: pdf);
+    return saveDocument(name: 'screening_result.pdf', pdf: pdf);
   }
 
-  static Widget buildCustomHeader() => Container(
+  static Future<File> saveDocument({
+    required String name,
+    required Document pdf,
+  }) async {
+    final bytes = await pdf.save();
+
+    final dir = await getApplicationDocumentsDirectory();
+    final file = File('${dir.path}/$name');
+
+    await file.writeAsBytes(bytes);
+
+    return file;
+  }
+
+  /*Build custom widget for PDF*/
+
+  //defining the logo for header
+  static Widget buildLogo(final headerLogo) => Container(
         padding: const EdgeInsets.only(bottom: 3 * PdfPageFormat.mm),
         decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(width: 2, color: PdfColors.blue)),
+          border: Border(bottom: BorderSide(width: 2, color: PdfColors.black)),
         ),
         child: Row(
           children: [
-            PdfLogo(),
-            SizedBox(width: 0.5 * PdfPageFormat.cm),
-            Text(
-              'Create Your PDF',
-              style: const TextStyle(fontSize: 20, color: PdfColors.blue),
-            ),
+            SvgImage(
+              svg: headerLogo,
+            )
           ],
         ),
       );
 
-  static Widget buildCustomHeadline() => Header(
-        child: Text(
-          'My Third Headline',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: PdfColors.white,
-          ),
-        ),
+// defining question widget
+  static Widget buildQuestion(String question) => Header(
+        child: Text(question,
+            style: TextStyle(
+              fontSize: 12,
+              color: PdfColors.black,
+            ),
+            textAlign: TextAlign.left),
         padding: const EdgeInsets.all(4),
-        decoration: const BoxDecoration(color: PdfColors.red),
+        decoration: const BoxDecoration(color: PdfColors.white),
       );
 
-  static Widget buildLink() => UrlLink(
-        destination: 'https://flutter.dev',
-        child: Text(
-          'Go to flutter.dev',
-          style: const TextStyle(
-            decoration: TextDecoration.underline,
-            color: PdfColors.blue,
-          ),
-        ),
-      );
-
-  static List<Widget> buildBulletPoints() => [
+//defining answer
+  static List<Widget> buildBulletPoints(answer) => [
         Bullet(text: 'First Bullet'),
         Bullet(text: 'Second Bullet'),
         Bullet(text: 'Third Bullet'),
       ];
-}*/
+}
+
+/* To do:
+- Defini looping for answer bullets */

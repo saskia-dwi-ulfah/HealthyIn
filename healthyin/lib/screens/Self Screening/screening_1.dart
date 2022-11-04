@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
 /*
 Nama, usia, jenis kelamin
@@ -17,7 +17,7 @@ class FirstPageScreening extends StatefulWidget {
 
 class _FirstPageScreeningState extends State<FirstPageScreening> {
   //for storing data from corresponding page
-  var all_data = {};
+  var allData = {};
 
   //controller for name and age fields
   var nameController = TextEditingController();
@@ -145,9 +145,9 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                         },
                         items: [
                           const DropdownMenuItem(
-                              child: Text("Pria"), value: "Pria"),
+                              value: "Pria", child: Text("Pria")),
                           const DropdownMenuItem(
-                              child: Text("Wanita"), value: "Wanita")
+                              value: "Wanita", child: Text("Wanita"))
                         ]),
                   ),
                   const SizedBox(height: 10),
@@ -230,7 +230,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () {
-                      all_data['identity'] = {
+                      allData['identity'] = {
                         'email': Get.arguments,
                         'nama': nameController.text.trim(),
                         'gender': selectedGender,
@@ -238,7 +238,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                       };
 
                       Get.to(() => const SecondPageScreening(),
-                          arguments: all_data);
+                          arguments: allData);
                     },
                     child: Text(
                       'Selanjutnya',

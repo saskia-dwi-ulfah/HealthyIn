@@ -1,17 +1,23 @@
+// ignore_for_file: unnecessary_import, implementation_imports
+
 /*
 Show list of hospitals
 */
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/api/pdf_api.dart';
+import 'package:healthyin/api/pdf_paragraph_api.dart';
 
 class SevereRecommendation extends StatelessWidget {
   const SevereRecommendation({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var data = Get.arguments;
+
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
@@ -84,7 +90,10 @@ class SevereRecommendation extends StatelessWidget {
               width: w,
               color: Colors.white,
               child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final pdfFile = await PdfParagraphApi.generate(data);
+                    PdfApi.openFile(pdfFile);
+                  },
                   style: OutlinedButton.styleFrom(
                       side: const BorderSide(
                           color: Color.fromARGB(1000, 4, 167, 119), width: 1),
