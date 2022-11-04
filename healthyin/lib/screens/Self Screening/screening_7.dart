@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/screens/Screening%20Result/recommendation_mild.dart';
 import 'package:healthyin/screens/Screening%20Result/recommendation_moderate.dart';
 import 'package:healthyin/screens/Screening%20Result/recommendation_severe.dart';
-import 'dart:convert' show json;
 
 class SeventhPageScreening extends StatefulWidget {
   const SeventhPageScreening({super.key});
