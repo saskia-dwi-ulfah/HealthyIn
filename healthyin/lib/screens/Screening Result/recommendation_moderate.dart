@@ -1,17 +1,25 @@
 /*
 Show list of hospitals
 */
+import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ModerateRecommendation extends StatelessWidget {
   const ModerateRecommendation({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var data = Get.arguments;
+
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 

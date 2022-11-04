@@ -3,7 +3,6 @@ Pertanyaan kontak dengan pasien COVID-19 14 hari terakhir
 */
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_3.dart';
 

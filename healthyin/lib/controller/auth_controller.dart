@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,10 +29,14 @@ class AuthController extends GetxController {
     ever(_user, _initialScreen);
   }
 
+  // ignore: duplicate_ignore
   _initialScreen(User? user) {
+    // ignore: duplicate_ignore, duplicate_ignore
     if (user == null) {
       //nobody tries to login
+      // ignore: avoid_print
       print("login page");
+      // ignore: prefer_const_constructors
       Get.offAll(() => HealthyInLoginScreen());
     } else {
       Get.offAll(() => HealthyInMainPage(email: user.email!));
