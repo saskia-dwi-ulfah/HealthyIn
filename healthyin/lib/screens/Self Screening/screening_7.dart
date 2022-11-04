@@ -470,7 +470,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         'fourth_page': data['fourth_page'],
                         'fifth_page': data['fifth_page'],
                         'sixth_page': data['sixth_page'],
-                        'seventh_page': data['seventh_page'],
+                        'seventh_page': data['seventh_page']
                       }).then((value) => print('Data successfully submitted'));
 
                       final_score = data['second_page']['score'] +
@@ -481,11 +481,13 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                           data['seventh_page']['score'];
 
                       if (final_score < 5) {
-                        Get.offAll(() => MildRecommendation());
+                        Get.offAll(() => MildRecommendation(), arguments: data);
                       } else if (final_score >= 5 && final_score <= 7) {
-                        Get.offAll(() => ModerateRecommendation());
+                        Get.offAll(() => ModerateRecommendation(),
+                            arguments: data);
                       } else if (final_score > 7) {
-                        Get.offAll(() => SevereRecommendation());
+                        Get.offAll(() => SevereRecommendation(),
+                            arguments: data);
                       }
                     },
                     child: Text(
