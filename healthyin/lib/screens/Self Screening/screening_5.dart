@@ -22,7 +22,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
   var question7 = "7. Apakah Anda memiliki komorbid/penyakit bawaan berikut?";
 
   //answer choosed
-  Set<String> answerChoosed = {};
+  var answerChoosed = new Map();
 
   //for scoring logic
   int fifthPageScore = 0;
@@ -131,9 +131,11 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       setState(() => isChecked1 = value!);
 
                       if (isChecked1 == true) {
-                        answerChoosed.add("Hipertensi");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Hipertensi";
                       } else {
-                        answerChoosed.remove("Hipertensi");
+                        answerChoosed
+                            .removeWhere((key, value) => value == "Hipertensi");
                       }
                     },
                   )),
@@ -163,9 +165,11 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       setState(() => isChecked2 = value!);
 
                       if (isChecked2 == true) {
-                        answerChoosed.add("Diabetes melitus");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Diabetes melitus";
                       } else {
-                        answerChoosed.remove("Diabetes melitus");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Diabetes melitus");
                       }
                     },
                   )),
@@ -195,9 +199,11 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       setState(() => isChecked3 = value!);
 
                       if (isChecked3 == true) {
-                        answerChoosed.add("Penyakit jantung");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Penyakit jantung";
                       } else {
-                        answerChoosed.remove("Penyakit jantung");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Penyakit jantung");
                       }
                     },
                   )),
@@ -227,9 +233,11 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       setState(() => isChecked4 = value!);
 
                       if (isChecked4 == true) {
-                        answerChoosed.add("Penyakit gangguan pernapasan");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Penyakit gangguan pernapasan";
                       } else {
-                        answerChoosed.remove("Penyakit gangguan pernapasan");
+                        answerChoosed.removeWhere((key, value) =>
+                            value == "Penyakit gangguan pernapasan");
                       }
                     },
                   )),
@@ -259,9 +267,11 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       setState(() => isChecked5 = value!);
 
                       if (isChecked5 == true) {
-                        answerChoosed.add("Penyakit ginjal kronis");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Penyakit ginjal kronis";
                       } else {
-                        answerChoosed.remove("Penyakit ginjal kronis");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Penyakit ginjal kronis");
                       }
                     },
                   )),
@@ -291,9 +301,11 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                       setState(() => isChecked6 = value!);
 
                       if (isChecked6 == true) {
-                        answerChoosed.add("Penyakit gangguan syaraf");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Penyakit gangguan syaraf";
                       } else {
-                        answerChoosed.remove("Penyakit gangguan syaraf");
+                        answerChoosed.removeWhere((key, value) =>
+                            value == "Penyakit gangguan syaraf");
                       }
                     },
                   )),
@@ -322,10 +334,12 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                     onChanged: (value) {
                       setState(() => isChecked7 = value!);
 
-                      if (isChecked7 == true) {
-                        answerChoosed.add("Penyakit liver");
+                      if (isChecked1 == true) {
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Penyakit liver";
                       } else {
-                        answerChoosed.remove("Penyakit liver");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Penyakit liver");
                       }
                     },
                   )),

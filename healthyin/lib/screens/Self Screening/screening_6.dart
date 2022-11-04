@@ -23,7 +23,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
       "8. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?";
 
   //answer choosed
-  Set<String> answerChoosed = {};
+  var answerChoosed = new Map();
 
   //for scoring logic
   int tempScore = 0;
@@ -131,9 +131,11 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                       setState(() => isChecked1 = value!);
 
                       if (isChecked1 == true) {
-                        answerChoosed.add("Masalah pernapasan");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Masalah pernapasan";
                       } else {
-                        answerChoosed.remove("Masalah pernapasan");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Masalah pernapasan");
                       }
                     },
                   )),
@@ -163,9 +165,11 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                       setState(() => isChecked2 = value!);
 
                       if (isChecked2 == true) {
-                        answerChoosed.add("Batuk kering");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Batuk kering";
                       } else {
-                        answerChoosed.remove("Batuk kering");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Batuk kering");
                       }
                     },
                   )),
@@ -195,9 +199,11 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                       setState(() => isChecked3 = value!);
 
                       if (isChecked3 == true) {
-                        answerChoosed.add("Sakit tenggorokan");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Sakit tenggorokan";
                       } else {
-                        answerChoosed.remove("Sakit tenggorokan");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Sakit tenggorokan");
                       }
                     },
                   )),
@@ -227,9 +233,11 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                       setState(() => isChecked4 = value!);
 
                       if (isChecked4 == true) {
-                        answerChoosed.add("Pilek");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Pilek";
                       } else {
-                        answerChoosed.remove("Pilek");
+                        answerChoosed
+                            .removeWhere((key, value) => value == "Pilek");
                       }
                     },
                   )),
@@ -259,9 +267,11 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                       setState(() => isChecked5 = value!);
 
                       if (isChecked5 == true) {
-                        answerChoosed.add("Lemah, letih, lesu");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Lemah, letih, lesu";
                       } else {
-                        answerChoosed.remove("Lemah, letih, lesu");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Lemah, letih, lesu");
                       }
                     },
                   )),

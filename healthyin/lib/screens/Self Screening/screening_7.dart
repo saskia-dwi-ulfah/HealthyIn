@@ -26,7 +26,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
       "9. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?";
 
   //answer choosed
-  Set<String> answerChoosed = {};
+  var answerChoosed = new Map();
 
   //for scoring logic
   int tempScore = 0;
@@ -142,9 +142,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked1 = value!);
 
                       if (isChecked1 == true) {
-                        answerChoosed.add("Sakit perut");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Sakit perut";
                       } else {
-                        answerChoosed.remove("Sakit perut");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Sakit perut");
                       }
                     },
                   )),
@@ -174,9 +176,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked2 = value!);
 
                       if (isChecked2 == true) {
-                        answerChoosed.add("Muntah");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Muntah";
                       } else {
-                        answerChoosed.remove("Muntah");
+                        answerChoosed
+                            .removeWhere((key, value) => value == "Muntah");
                       }
                     },
                   )),
@@ -206,9 +210,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked3 = value!);
 
                       if (isChecked3 == true) {
-                        answerChoosed.add("Diare");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Diare";
                       } else {
-                        answerChoosed.remove("Diare");
+                        answerChoosed
+                            .removeWhere((key, value) => value == "Diare");
                       }
                     },
                   )),
@@ -238,9 +244,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked4 = value!);
 
                       if (isChecked4 == true) {
-                        answerChoosed.add("Nyeri dada atau tekanan");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Nyeri dada atau tekanan";
                       } else {
-                        answerChoosed.remove("Nyeri dada atau tekanan");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Nyeri dada atau tekanan");
                       }
                     },
                   )),
@@ -270,9 +278,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked5 = value!);
 
                       if (isChecked5 == true) {
-                        answerChoosed.add("Nyeri otot");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Nyeri otot";
                       } else {
-                        answerChoosed.remove("Nyeri otot");
+                        answerChoosed
+                            .removeWhere((key, value) => value == "Nyeri otot");
                       }
                     },
                   )),
@@ -302,10 +312,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked6 = value!);
 
                       if (isChecked6 == true) {
-                        answerChoosed.add("Kehilangan indra perasa dan pembau");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Kehilangan indra perasa dan pembau";
                       } else {
-                        answerChoosed
-                            .remove("Kehilangan indra perasa dan pembau");
+                        answerChoosed.removeWhere((key, value) =>
+                            value == "Kehilangan indra perasa dan pembau");
                       }
                     },
                   )),
@@ -335,10 +346,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked7 = value!);
 
                       if (isChecked7 == true) {
-                        answerChoosed.add(
-                            "Ruam pada kulit atau perubahan warna pada jari tangan atau kaki");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Ruam pada kulit atau perubahan warna pada jari tangan atau kaki";
                       } else {
-                        answerChoosed.remove(
+                        answerChoosed.removeWhere((key, value) =>
+                            value ==
                             "Ruam pada kulit atau perubahan warna pada jari tangan atau kaki");
                       }
                     },
@@ -369,10 +381,11 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       setState(() => isChecked8 = value!);
 
                       if (isChecked8 == true) {
-                        answerChoosed.add(
-                            "Kehilangan kemampuan untuk berbicara dan bergerak");
+                        answerChoosed[(answerChoosed.length + 1).toString()] =
+                            "Kehilangan kemampuan untuk berbicara dan bergerak";
                       } else {
-                        answerChoosed.remove(
+                        answerChoosed.removeWhere((key, value) =>
+                            value ==
                             "Kehilangan kemampuan untuk berbicara dan bergerak");
                       }
                     },
@@ -449,44 +462,19 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         'score': seventhPageScore
                       };
 
-                      print(json.encode(data));
-
                       //save data to Firestore
-                      /* await screeningHistory
-                          .add(
-                              /*'email': data['identity']['email'].toString(),
-                        'nama': data['identity']['nama'].toString(),
-                        'gender': data['identity']['gender'].toString(),
-                        'usia': data['identity']['usia'],
-                        'second_page_question':
-                            data['second_page']['question'].toString(),
-                        'second_page_answer': data['second_page']['answer'],
-                        'second_page_score': data['second_page']['score'],
-                        'third_page_question':
-                            data['third_page']['question'].toString(),
-                        'third_page_answer': data['third_page']['answer'],
-                        'third_page_score': data['third_page']['score'],
-                        'fourth_page_question':
-                            data['fourth_page']['question'].toString(),
-                        'fourth_page_answer': data['fourth_page']['answer'],
-                        'fourth_page_score': data['fourth_page']['score'],
-                        'fifth_page_question':
-                            data['fifth_page']['question'].toString(),
-                        'fifth_page_answer': data['fifth_page']['answer'],
-                        'fifth_page_score': data['fifth_page']['score'],
-                        'sixth_page_question':
-                            data['sixth_page']['question'].toString(),
-                        'sixth_page_answer': data['sixth_page']['answer'],
-                        'sixth_page_score': data['sixth_page']['score'],
-                        'seventh_page_question':
-                            data['seventh_page']['question'].toString(),
-                        'seventh_page_answer': data['seventh_page']['answer'],
-                        'seventh_page_score': data['seventh_page']['score']*/
-                              Map<String, dynamic>.from(data))
-                          .then(
-                              (value) => print('Data successfully submitted'));*/
+                      await screeningHistory.add({
+                        'done_at': DateTime.now(),
+                        'identity': data['identity'],
+                        'second_page': data['second_page'],
+                        'third_page': data['third_page'],
+                        'fourth_page': data['fourth_page'],
+                        'fifth_page': data['fifth_page'],
+                        'sixth_page': data['sixth_page'],
+                        'seventh_page': data['seventh_page'],
+                      }).then((value) => print('Data successfully submitted'));
 
-                      /* final_score = data['second_page']['score'] +
+                      final_score = data['second_page']['score'] +
                           data['third_page']['score'] +
                           data['fourth_page']['score'] +
                           data['fifth_page']['score'] +
@@ -494,12 +482,12 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                           data['seventh_page']['score'];
 
                       if (final_score < 5) {
-                        Get.to(() => MildRecommendation());
+                        Get.offAll(() => MildRecommendation());
                       } else if (final_score >= 5 && final_score <= 7) {
-                        Get.to(() => ModerateRecommendation());
+                        Get.offAll(() => ModerateRecommendation());
                       } else if (final_score > 7) {
-                        Get.to(() => SevereRecommendation());
-                      }*/
+                        Get.offAll(() => SevereRecommendation());
+                      }
                     },
                     child: Text(
                       'Selanjutnya',
