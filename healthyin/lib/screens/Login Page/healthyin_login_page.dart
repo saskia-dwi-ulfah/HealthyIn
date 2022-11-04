@@ -52,18 +52,18 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                 children: [
                   Text("Selamat Datang Kembali",
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(1000, 134, 22, 87)))),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   Text("Gunakan akun Anda untuk masuk",
                       style: GoogleFonts.lato(
                           textStyle: TextStyle(
                               fontSize: 18, color: Colors.grey[500]))),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   Align(
@@ -71,37 +71,37 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                       child: Text(
                         "Email",
                         style: GoogleFonts.lato(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 16,
                                 color: Color.fromARGB(1000, 18, 18, 18)),
                             fontWeight: FontWeight.bold),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Container(
                     width: w,
                     height: 55,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(1000, 241, 241, 241),
+                        color: const Color.fromARGB(1000, 241, 241, 241),
                         borderRadius: BorderRadius.circular(12)),
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   width: 1.5)),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 1.0)),
+                              borderSide: const BorderSide(
+                                  color: Colors.white, width: 1.0)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12))),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Align(
@@ -109,19 +109,19 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                       child: Text(
                         "Password",
                         style: GoogleFonts.lato(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 16,
                                 color: Color.fromARGB(1000, 18, 18, 18)),
                             fontWeight: FontWeight.bold),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Container(
                     width: w,
                     height: 55,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(1000, 241, 241, 241),
+                        color: const Color.fromARGB(1000, 241, 241, 241),
                         borderRadius: BorderRadius.circular(12)),
                     child: TextField(
                       controller: passwordController,
@@ -129,18 +129,18 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   width: 1.5)),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 1.0)),
+                              borderSide: const BorderSide(
+                                  color: Colors.white, width: 1.0)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12))),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Row(
@@ -150,7 +150,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                       ),
                       Text("Lupa Kata Sandi?",
                           style: GoogleFonts.lato(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   fontSize: 16,
                                   color: Color.fromARGB(1000, 4, 167, 119)),
                               fontWeight: FontWeight.bold))
@@ -158,7 +158,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                   )
                 ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           GestureDetector(
@@ -172,7 +172,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
               margin: const EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                       begin: Alignment.bottomLeft,
                       end: Alignment.topRight,
                       colors: [
@@ -182,7 +182,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
               child: Center(
                 child: Text("Masuk",
                     style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -190,7 +190,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
             width: w,
             height: 0.1 * h,
@@ -202,9 +202,10 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                 Text(
                   "--------- atau masuk masuk melalui ---------",
                   style: GoogleFonts.lato(
-                      fontSize: 16, color: Color.fromARGB(1000, 170, 170, 170)),
+                      fontSize: 16,
+                      color: const Color.fromARGB(1000, 170, 170, 170)),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 GestureDetector(
                   onTap: () {
                     //AuthController.instance.signInAndLogInWithGoogle();
@@ -220,7 +221,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 1,
                                 blurRadius: 1,
-                                offset: Offset(0, 1))
+                                offset: const Offset(0, 1))
                           ]),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -229,7 +230,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                             Text(
                               "Google",
                               style: GoogleFonts.lato(
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                       fontSize: 18,
                                       color: Color.fromARGB(1000, 18, 18, 18),
                                       fontWeight: FontWeight.bold)),
@@ -239,22 +240,24 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
               ]),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           RichText(
               text: TextSpan(
                   text: "Belum memiliki akun?",
                   style: GoogleFonts.lato(
-                      color: Color.fromARGB(1000, 170, 170, 170), fontSize: 16),
+                      color: const Color.fromARGB(1000, 170, 170, 170),
+                      fontSize: 16),
                   children: [
                 TextSpan(
                     text: " Buat akun sekarang",
                     style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 4, 167, 119),
                             fontSize: 16,
                             fontWeight: FontWeight.bold)),
                     recognizer: TapGestureRecognizer()
-                      ..onTap = () => Get.to(() => HealthyInSignupScreen()))
+                      ..onTap =
+                          () => Get.to(() => const HealthyInSignupScreen()))
               ])),
           Container(
             height: 0.125 * h,

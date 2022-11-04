@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 /*
 Pertanyaan kontak dengan pasien COVID-19 14 hari terakhir
 */
@@ -40,7 +42,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
         height: h,
         width: w,
         //Background image
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/self_screening_bg_x2.png"),
                 fit: BoxFit.cover)),
@@ -54,7 +56,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
               child: Text("Self Screening",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.5,
@@ -68,7 +70,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
               child: Text("COVID-19",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.5,
@@ -81,11 +83,11 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
               height: 90,
               width: w,
               alignment: Alignment.topCenter,
-              margin: EdgeInsets.only(left: 20, right: 20),
+              margin: const EdgeInsets.only(left: 20, right: 20),
               child: Text(question4,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Color.fromARGB(1000, 18, 18, 18),
@@ -100,24 +102,24 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                 child: Column(children: [
               //Option 1
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: RadioListTile(
                     title: Text(
                       'Ya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: 1,
                     groupValue: valueChecked,
@@ -127,24 +129,24 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                   )),
               //Option 2
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: RadioListTile(
                     title: Text(
                       'Tidak',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: 2,
                     groupValue: valueChecked,
@@ -166,7 +168,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                 height: 40,
                 child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                           color: Color.fromARGB(1000, 4, 167, 119), width: 2),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
@@ -177,7 +179,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 4, 167, 119),
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -191,7 +193,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                 height: 40,
                 child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Color.fromARGB(1000, 4, 167, 119),
+                      backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
@@ -210,12 +212,12 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                         'score': secondPageScore
                       };
 
-                      Get.to(() => ThirdPageScreening(), arguments: data);
+                      Get.to(() => const ThirdPageScreening(), arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,

@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,7 +21,7 @@ class HealthyInMainPage extends StatelessWidget {
         body: Column(
           children: [
             Container(width: w, height: 0.3 * h),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -30,33 +32,33 @@ class HealthyInMainPage extends StatelessWidget {
                 children: [
                   Text("Welcome",
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
                               color: Colors.black54))),
                   Text(email,
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black54)))
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
               onTap: () {
-                Get.to(() => FirstPageScreening(), arguments: email);
+                Get.to(() => const FirstPageScreening(), arguments: email);
               },
               child: Container(
                   width: w * 0.5,
                   height: h * 0.08,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Color.fromARGB(1000, 134, 22, 87)),
-                  child: Center(
+                      color: const Color.fromARGB(1000, 134, 22, 87)),
+                  child: const Center(
                     child: Text("Skrining Mandiri",
                         style: TextStyle(
                             fontSize: 18,
@@ -64,7 +66,7 @@ class HealthyInMainPage extends StatelessWidget {
                             color: Colors.white)),
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
@@ -76,8 +78,8 @@ class HealthyInMainPage extends StatelessWidget {
                 height: h * 0.08,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Color.fromARGB(1000, 134, 22, 87)),
-                child: Center(
+                    color: const Color.fromARGB(1000, 134, 22, 87)),
+                child: const Center(
                   child: Text("Sign out",
                       style: TextStyle(
                           fontSize: 36,

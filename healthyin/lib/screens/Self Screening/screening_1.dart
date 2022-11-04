@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 /*
 Nama, usia, jenis kelamin
 */
@@ -35,7 +37,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
         height: h,
         width: w,
         //Background image
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/self_screening_bg_x2.png"),
                 fit: BoxFit.cover)),
@@ -49,7 +51,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
               child: Text("Self Screening",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.5,
@@ -63,7 +65,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
               child: Text("COVID-19",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.5,
@@ -74,7 +76,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
           Container(
               width: w,
               height: 90 + 0.024 * h + 0.35 * h,
-              margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+              margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
               child: Column(
                 children: [
                   // "1. Nama lengkap"
@@ -83,19 +85,19 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                     width: w,
                     child: Text("1. Nama lengkap",
                         style: GoogleFonts.lato(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromARGB(1000, 18, 18, 18),
                                 height: 1.4))),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   // Input for "Nama lengkap"
                   Container(
                     height: 55,
                     width: w,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(1000, 241, 241, 241),
+                        color: const Color.fromARGB(1000, 241, 241, 241),
                         borderRadius: BorderRadius.circular(12)),
                     child: TextField(
                       controller: nameController,
@@ -105,31 +107,31 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                               TextStyle(fontSize: 16, color: Colors.grey[500]),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   width: 1.5)),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 1.0)),
+                              borderSide: const BorderSide(
+                                  color: Colors.white, width: 1.0)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12))),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   // "2. Jenis kelamin"
                   Container(
                     height: 30,
                     width: w,
                     child: Text("2. Jenis kelamin",
                         style: GoogleFonts.lato(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromARGB(1000, 18, 18, 18),
                                 height: 1.4))),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   // Dropdown for "Gender"
                   Container(
                     height: 55,
@@ -142,31 +144,32 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           });
                         },
                         items: [
-                          DropdownMenuItem(child: Text("Pria"), value: "Pria"),
-                          DropdownMenuItem(
+                          const DropdownMenuItem(
+                              child: Text("Pria"), value: "Pria"),
+                          const DropdownMenuItem(
                               child: Text("Wanita"), value: "Wanita")
                         ]),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   // "3. Usia"
                   Container(
                     height: 30,
                     width: w,
                     child: Text("3. Usia",
                         style: GoogleFonts.lato(
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromARGB(1000, 18, 18, 18),
                                 height: 1.4))),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   // Input for "Usia"
                   Container(
                     height: 55,
                     width: w,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(1000, 241, 241, 241),
+                        color: const Color.fromARGB(1000, 241, 241, 241),
                         borderRadius: BorderRadius.circular(12)),
                     child: TextField(
                       controller: ageController,
@@ -176,13 +179,13 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                               TextStyle(fontSize: 16, color: Colors.grey[500]),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   width: 1.5)),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 1.0)),
+                              borderSide: const BorderSide(
+                                  color: Colors.white, width: 1.0)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12))),
                     ),
@@ -199,7 +202,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                 height: 40,
                 child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                           color: Color.fromARGB(1000, 4, 167, 119), width: 2),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
@@ -208,7 +211,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 4, 167, 119),
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -222,7 +225,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                 height: 40,
                 child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Color.fromARGB(1000, 4, 167, 119),
+                      backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
@@ -234,12 +237,13 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                         'usia': int.parse(ageController.text.trim())
                       };
 
-                      Get.to(() => SecondPageScreening(), arguments: all_data);
+                      Get.to(() => const SecondPageScreening(),
+                          arguments: all_data);
                     },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,

@@ -12,7 +12,7 @@ class HealthyInSplashScreen extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
 
     return Container(
-      constraints: BoxConstraints.expand(),
+      constraints: const BoxConstraints.expand(),
       height: h,
       width: w,
       decoration: const BoxDecoration(

@@ -45,9 +45,9 @@ dependencies:
   get:
   google_fonts:
   google_sign_in:
-  syncfusion_flutter_pdf: 
   path_provider:
   pdf:
+  syncfusion_flutter_pdf:
 
 dev_dependencies:
   flutter_test:

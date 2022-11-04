@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 /*
 Pertanyaan gejala 14 hari terakhir, layer 2
 */
@@ -23,7 +25,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
       "8. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?";
 
   //answer choosed
-  var answerChoosed = new Map();
+  var answerChoosed = {};
 
   //for scoring logic
   int tempScore = 0;
@@ -47,7 +49,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
         height: h,
         width: w,
         //Background image
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/self_screening_bg_x2.png"),
                 fit: BoxFit.cover)),
@@ -61,7 +63,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
               child: Text("Self Screening",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.5,
@@ -75,7 +77,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
               child: Text("COVID-19",
                   textAlign: TextAlign.start,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.5,
@@ -88,11 +90,11 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
               height: 90,
               width: w,
               alignment: Alignment.topCenter,
-              margin: EdgeInsets.only(left: 20, right: 20),
+              margin: const EdgeInsets.only(left: 20, right: 20),
               child: Text(question8,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Color.fromARGB(1000, 18, 18, 18),
@@ -107,24 +109,24 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                 child: Column(children: [
               //Option 1
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: CheckboxListTile(
                     title: Text(
                       'Masalah pernapasan',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: isChecked1,
                     onChanged: (value) {
@@ -141,24 +143,24 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                   )),
               //Option 2
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: CheckboxListTile(
                     title: Text(
                       'Batuk kering',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: isChecked2,
                     onChanged: (value) {
@@ -175,24 +177,24 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                   )),
               //Option 3
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: CheckboxListTile(
                     title: Text(
                       'Sakit tenggorokan',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: isChecked3,
                     onChanged: (value) {
@@ -209,24 +211,24 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                   )),
               //Option 4
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: CheckboxListTile(
                     title: Text(
                       'Pilek',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: isChecked4,
                     onChanged: (value) {
@@ -243,24 +245,24 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                   )),
               //Option 5
               Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.only(left: 20, right: 20, bottom: 8),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Color.fromARGB(1000, 241, 241, 241),
+                    color: const Color.fromARGB(1000, 241, 241, 241),
                   ),
                   child: CheckboxListTile(
                     title: Text(
                       'Lemah, letih, lesu',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.4),
                       ),
                     ),
-                    activeColor: Color.fromARGB(1000, 134, 22, 87),
+                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: isChecked5,
                     onChanged: (value) {
@@ -289,7 +291,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                 height: 40,
                 child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                           color: Color.fromARGB(1000, 4, 167, 119), width: 2),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
@@ -300,7 +302,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                     child: Text(
                       'Sebelumnya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 4, 167, 119),
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -314,7 +316,7 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                 height: 40,
                 child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Color.fromARGB(1000, 4, 167, 119),
+                      backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
@@ -343,12 +345,13 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
                         'score': sixthPageScore
                       };
 
-                      Get.to(() => SeventhPageScreening(), arguments: data);
+                      Get.to(() => const SeventhPageScreening(),
+                          arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',
                       style: GoogleFonts.lato(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
