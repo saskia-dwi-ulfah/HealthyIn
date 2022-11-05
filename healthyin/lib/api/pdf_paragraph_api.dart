@@ -22,13 +22,23 @@ class PdfParagraphApi {
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: PdfColors.black))),
-          buildQuestion('1. Identitas diri: '),
-          buildQuestion(data['second_page']['question']),
-          buildQuestion(data['third_page']['question']),
-          buildQuestion(data['fourth_page']['question']),
+          buildQuestion('1. Nama: ${data['identity']['nama']}'),
+          buildQuestion('2. Gender: ${data['identity']['gender']}'),
+          buildQuestion('3. Usia: ${data['identity']['usia']} tahun'),
+          buildQuestion(
+              data['second_page']['question'] + data['second_page']['answer']),
+          buildQuestion(data['third_page']['question'] +
+              ' ' +
+              data['third_page']['answer']),
+          buildQuestion(data['fourth_page']['question'] +
+              ' ' +
+              data['fourth_page']['answer']),
           buildQuestion(data['fifth_page']['question']),
+          ...buildBulletPoints(data['fifth_page']['answer']),
           buildQuestion(data['sixth_page']['question']),
+          ...buildBulletPoints(data['sixth_page']['answer']),
           buildQuestion(data['seventh_page']['question']),
+          ...buildBulletPoints(data['seventh_page']['answer']),
           SizedBox(height: 0.1 * PdfPageFormat.cm),
         ],
         footer: (context) {
@@ -62,6 +72,11 @@ class PdfParagraphApi {
     return file;
   }
 
+  static Future openFile(File file) async {
+    final url = file.path;
+    await OpenFile.open(url);
+  }
+
   /*Build custom widget for PDF*/
 
   //defining the logo for header
@@ -82,22 +97,21 @@ class PdfParagraphApi {
 // defining question widget
   static Widget buildQuestion(String question) => Header(
         child: Text(question,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               color: PdfColors.black,
             ),
             textAlign: TextAlign.left),
-        padding: const EdgeInsets.all(4),
+        padding: const EdgeInsets.all(1),
         decoration: const BoxDecoration(color: PdfColors.white),
       );
 
 //defining answer
-  static List<Widget> buildBulletPoints(answer) => [
-        Bullet(text: 'First Bullet'),
-        Bullet(text: 'Second Bullet'),
-        Bullet(text: 'Third Bullet'),
-      ];
+  static List<dynamic> buildBulletPoints(answer) {
+    if (answer == null) {
+      return [Bullet(text: "Tidak ada")];
+    } else {
+      return answer.entries.map((e) => Bullet(text: e.value)).toList();
+    }
+  }
 }
-
-/* To do:
-- Defini looping for answer bullets */

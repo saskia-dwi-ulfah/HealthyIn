@@ -4,7 +4,6 @@ Chat with doctor
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/api/pdf_api.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
 
 class MildRecommendation extends StatelessWidget {
@@ -87,8 +86,9 @@ class MildRecommendation extends StatelessWidget {
               color: Colors.white,
               child: OutlinedButton(
                   onPressed: () async {
+                    //print(data);
                     final pdfFile = await PdfParagraphApi.generate(data);
-                    PdfApi.openFile(pdfFile);
+                    PdfParagraphApi.openFile(pdfFile);
                   },
                   style: OutlinedButton.styleFrom(
                       side: const BorderSide(

@@ -464,19 +464,6 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         'score': seventhPageScore
                       };
 
-                      //save data to Firestore
-                      await screeningHistory.add({
-                        'done_at': DateTime.now(),
-                        'identity': data['identity'],
-                        'second_page': data['second_page'],
-                        'third_page': data['third_page'],
-                        'fourth_page': data['fourth_page'],
-                        'fifth_page': data['fifth_page'],
-                        'sixth_page': data['sixth_page'],
-                        'seventh_page': data['seventh_page']
-                        // ignore: avoid_print
-                      }).then((value) => print('Data successfully submitted'));
-
                       finalScore = data['second_page']['score'] +
                           data['third_page']['score'] +
                           data['fourth_page']['score'] +
@@ -494,6 +481,19 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         Get.offAll(() => const SevereRecommendation(),
                             arguments: data);
                       }
+
+                      //save data to Firestore
+                      await screeningHistory.add({
+                        'done_at': DateTime.now(),
+                        'identity': data['identity'],
+                        'second_page': data['second_page'],
+                        'third_page': data['third_page'],
+                        'fourth_page': data['fourth_page'],
+                        'fifth_page': data['fifth_page'],
+                        'sixth_page': data['sixth_page'],
+                        'seventh_page': data['seventh_page']
+                        // ignore: avoid_print
+                      }).then((value) => print('Data successfully submitted'));
                     },
                     child: Text(
                       'Selanjutnya',
@@ -519,3 +519,4 @@ More improvement:
 - How to make code less repetition?
 - How to change active color of outlined button and its text?
  */
+

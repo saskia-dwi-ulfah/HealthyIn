@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/api/pdf_api.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
 
 class SevereRecommendation extends StatelessWidget {
@@ -91,8 +90,9 @@ class SevereRecommendation extends StatelessWidget {
               color: Colors.white,
               child: OutlinedButton(
                   onPressed: () async {
+                    //print(data);
                     final pdfFile = await PdfParagraphApi.generate(data);
-                    PdfApi.openFile(pdfFile);
+                    PdfParagraphApi.openFile(pdfFile);
                   },
                   style: OutlinedButton.styleFrom(
                       side: const BorderSide(
@@ -110,3 +110,8 @@ class SevereRecommendation extends StatelessWidget {
     );
   }
 }
+
+/*
+Fixing problem: why when screening result is generated, there is some lag. The PDF shows previous screening result. 
+We need to 'back' and repress 'Unduh Hasil Screening' to be able to see current screening result.
+ */
