@@ -1,14 +1,11 @@
-// ignore_for_file: unnecessary_import, implementation_imports
-
 /*
 Show list of hospitals
 */
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
+import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 
 class SevereRecommendation extends StatelessWidget {
   const SevereRecommendation({super.key});
@@ -26,9 +23,24 @@ class SevereRecommendation extends StatelessWidget {
       body: Container(
           height: h,
           width: w,
-          margin: const EdgeInsets.only(left: 20, right: 20),
+          margin: const EdgeInsets.only(left: 10, right: 10),
           child: Column(children: [
-            SizedBox(height: 0.15 * h),
+            SizedBox(height: 0.05 * h),
+            GestureDetector(
+              onTap: () {
+                Get.offAll(
+                    () => HealthyInMainPage(email: data['identity']['email']));
+              },
+              child: Row(children: [
+                const BackButton(color: Color.fromARGB(1000, 18, 18, 18)),
+                Text("Halaman Utama",
+                    style: GoogleFonts.lato(
+                        fontSize: 14,
+                        height: 1,
+                        color: const Color.fromARGB(1000, 18, 18, 18)))
+              ]),
+            ),
+            SizedBox(height: 0.01 * h),
             Text("Hasil self screening Anda adalah:",
                 style: GoogleFonts.lato(
                     fontSize: 16,

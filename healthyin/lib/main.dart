@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:healthyin/screens/Splash%20Screen/healthyin_splashscreen_page.dart';
 import 'package:healthyin/controller/auth_controller.dart';
+import 'package:healthyin/screens/Splash%20Screen/healthyin_splashscreen_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
