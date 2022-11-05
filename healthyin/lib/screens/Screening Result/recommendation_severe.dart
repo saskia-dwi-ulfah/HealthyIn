@@ -33,7 +33,7 @@ class SevereRecommendation extends StatelessWidget {
               },
               child: Row(children: [
                 const BackButton(color: Color.fromARGB(1000, 18, 18, 18)),
-                Text("Halaman Utama",
+                Text("Beranda",
                     style: GoogleFonts.lato(
                         fontSize: 14,
                         height: 1,
@@ -81,18 +81,18 @@ class SevereRecommendation extends StatelessWidget {
               height: 40,
               width: w,
               color: Colors.white,
-              child: OutlinedButton(
+              child: TextButton(
                   onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
-                          color: Color.fromARGB(1000, 4, 167, 119), width: 1),
+                  style: TextButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12)))),
                   child: Text("Lihat Daftar Rumah Sakit di D.I. Yogyakarta",
                       style: GoogleFonts.lato(
                           textStyle: const TextStyle(
                               fontSize: 15,
-                              color: Color.fromARGB(1000, 4, 167, 119),
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
                               height: 1.5)))),
             ),
             const SizedBox(height: 10),
@@ -108,13 +108,14 @@ class SevereRecommendation extends StatelessWidget {
                   },
                   style: OutlinedButton.styleFrom(
                       side: const BorderSide(
-                          color: Color.fromARGB(1000, 4, 167, 119), width: 1),
+                          color: Color.fromARGB(1000, 4, 167, 119), width: 2),
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12)))),
                   child: Text("Unduh Hasil Screening",
                       style: GoogleFonts.lato(
                           textStyle: const TextStyle(
                               fontSize: 15,
+                              fontWeight: FontWeight.w600,
                               color: Color.fromARGB(1000, 4, 167, 119),
                               height: 1.5)))),
             )
