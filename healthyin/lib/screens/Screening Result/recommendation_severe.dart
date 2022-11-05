@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
+import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 
 class SevereRecommendation extends StatelessWidget {
   const SevereRecommendation({super.key});
@@ -82,7 +83,9 @@ class SevereRecommendation extends StatelessWidget {
               width: w,
               color: Colors.white,
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => HospitalListPage(), arguments: data);
+                  },
                   style: TextButton.styleFrom(
                       backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
                       shape: const RoundedRectangleBorder(
