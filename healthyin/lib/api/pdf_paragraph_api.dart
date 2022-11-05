@@ -108,7 +108,7 @@ class PdfParagraphApi {
 
 //defining answer
   static List<dynamic> buildBulletPoints(answer) {
-    if (answer == null) {
+    if (answer.length == 0) {
       return [Bullet(text: "Tidak ada")];
     } else {
       return answer.entries.map((e) => Bullet(text: e.value)).toList();
