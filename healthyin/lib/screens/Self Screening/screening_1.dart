@@ -103,8 +103,8 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                       controller: nameController,
                       decoration: InputDecoration(
                           hintText: "contoh: Joko Widodo",
-                          hintStyle:
-                              TextStyle(fontSize: 16, color: Colors.grey[500]),
+                          hintStyle: GoogleFonts.lato(
+                              fontSize: 16, color: Colors.grey[500]),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: const BorderSide(
@@ -175,8 +175,8 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                       controller: ageController,
                       decoration: InputDecoration(
                           hintText: "contoh: 61",
-                          hintStyle:
-                              TextStyle(fontSize: 16, color: Colors.grey[500]),
+                          hintStyle: GoogleFonts.lato(
+                              fontSize: 16, color: Colors.grey[500]),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: const BorderSide(

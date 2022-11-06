@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/model/hospital_model.dart';
 import 'package:healthyin/widget/hotel_card.dart';
 
@@ -16,6 +17,7 @@ class HospitalListPage extends StatefulWidget {
 
 class _HospitalListPageState extends State<HospitalListPage> {
   final _hospitalSearchController = TextEditingController();
+  var selectedCity = "";
 
   late Future resultsLoaded;
   List _allResults = [];
@@ -99,6 +101,34 @@ class _HospitalListPageState extends State<HospitalListPage> {
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 ),
                 SizedBox(height: 10),
+                SizedBox(
+                  height: 55,
+                  width: w,
+                  child: DropdownButton(
+                      value: selectedCity,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedCity = newValue!;
+                        });
+                      },
+                      items: const [
+                        DropdownMenuItem(
+                            value: "Semua kabupaten/kota",
+                            child: Text("Semua kabupaten/kota")),
+                        DropdownMenuItem(
+                            value: "Sleman", child: Text("Sleman")),
+                        DropdownMenuItem(
+                            value: "Gunung Kidul", child: Text("Gunung Kidul")),
+                        DropdownMenuItem(
+                            value: "Kulon Progo", child: Text("Kulon Progo")),
+                        DropdownMenuItem(
+                            value: "Bantul", child: Text("Bantul")),
+                        DropdownMenuItem(
+                            value: "Kota Yogyakarta",
+                            child: Text("Kota Yogyakarta"))
+                      ]),
+                ),
+                SizedBox(height: 10),
                 Container(
                   height: 55,
                   width: w,
@@ -108,6 +138,9 @@ class _HospitalListPageState extends State<HospitalListPage> {
                   child: TextField(
                     controller: _hospitalSearchController,
                     decoration: InputDecoration(
+                        hintText: "Masukkan nama rumah sakit",
+                        hintStyle: GoogleFonts.lato(
+                            fontSize: 16, color: Colors.grey[500]),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
