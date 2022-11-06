@@ -1,7 +1,11 @@
+// Tutorial: https://www.youtube.com/watch?v=H3CCtCmBUoQ&t=520s
+
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:healthyin/model/hospital_model.dart';
+import 'package:healthyin/widget/hotel_card.dart';
 
 class HospitalListPage extends StatefulWidget {
   const HospitalListPage({super.key});
@@ -11,9 +15,11 @@ class HospitalListPage extends StatefulWidget {
 }
 
 class _HospitalListPageState extends State<HospitalListPage> {
-  var _hospitalSearchController = TextEditingController();
+  final _hospitalSearchController = TextEditingController();
 
-  /*List _allResults = [];
+  late Future resultsLoaded;
+  List _allResults = [];
+  List _resultsList = [];
 
   @override
   void initState() {
@@ -28,27 +34,55 @@ class _HospitalListPageState extends State<HospitalListPage> {
     super.dispose();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    resultsLoaded = getHospitalLists();
+  }
+
   _onSearchChanged() {
-    print(_hospitalSearchController.text);
+    searchResultList();
+  }
+
+  searchResultList() {
+    var showResults = [];
+
+    if (_hospitalSearchController.text != "") {
+      // we have a search parameter
+      for (var hospitalSnapshot in _allResults) {
+        var title =
+            HospitalModel.fromSnapshot(hospitalSnapshot).nama_rs.toLowerCase();
+
+        if (title.contains(_hospitalSearchController.text.toLowerCase())) {
+          showResults.add(hospitalSnapshot);
+        }
+      }
+    } else {
+      showResults = List.from(_allResults);
+    }
+
+    setState(() {
+      _resultsList = showResults;
+    });
   }
 
   getHospitalLists() async {
-    var data =
-        await FirebaseFirestore.instance.collection('hospitals').snapshots();
+    var data = await FirebaseFirestore.instance.collection('hospitals').get();
 
     setState(() {
-      _allResults = data as List;
+      _allResults = data.docs;
     });
-  }*/
+    searchResultList();
+    return 'complete';
+  }
 
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    final db = FirebaseFirestore.instance;
-
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -88,23 +122,12 @@ class _HospitalListPageState extends State<HospitalListPage> {
                   ),
                 ),
                 SizedBox(height: 10),
-                Center(
-                  child: OutlinedButton(
-                      onPressed: () async {
-                        FirebaseFirestore.instance
-                            .collection('hospitals')
-                            .get()
-                            .then((QuerySnapshot querySnapshot) {
-                          querySnapshot.docs.forEach((doc) {
-                            print(doc["nama_rs"]);
-                          });
-                        });
-                      },
-                      child: Text("Click me")),
-                )
-                /*Expanded(
-                  child: ListView(),
-                )*/
+                Expanded(
+                    child: ListView.builder(
+                  itemCount: _resultsList.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      buildHospitalCard(context, _resultsList[index]),
+                ))
               ],
             )));
   }

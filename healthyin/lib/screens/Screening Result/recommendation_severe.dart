@@ -84,7 +84,7 @@ class SevereRecommendation extends StatelessWidget {
               color: Colors.white,
               child: TextButton(
                   onPressed: () {
-                    Get.to(() => HospitalListPage(), arguments: data);
+                    Get.to(() => const HospitalListPage(), arguments: data);
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
