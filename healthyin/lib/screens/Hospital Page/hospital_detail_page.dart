@@ -1,10 +1,11 @@
 // ignore_for_file: unnecessary_import, implementation_imports
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:healthyin/model/hospital_model.dart';
+import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 
 class HospitalDetail extends StatelessWidget {
   final HospitalModel hospital;
@@ -27,7 +28,21 @@ class HospitalDetail extends StatelessWidget {
                     image: AssetImage("assets/images/self_screening_bg_x2.png"),
                     fit: BoxFit.cover)),
             child: Column(children: [
-              SizedBox(height: 0.1 * h),
+              SizedBox(height: 0.05 * h),
+              GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Row(children: [
+                    const BackButton(
+                        color: Color.fromARGB(1000, 255, 255, 255)),
+                    Text("Daftar Rumah Sakit di D.I. Yogyakarta",
+                        style: GoogleFonts.lato(
+                            fontSize: 14,
+                            height: 1,
+                            color: const Color.fromARGB(1000, 255, 255, 255)))
+                  ])),
+              SizedBox(height: 0.01 * h),
               Container(
                   width: w,
                   height: 40,
@@ -81,7 +96,6 @@ class HospitalDetail extends StatelessWidget {
                                 textStyle: const TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w900,
-                                    letterSpacing: 1.5,
                                     color: Color.fromARGB(1000, 134, 22, 87),
                                     height: 1.5))),
                         Text(hospital.kode_rs.toString(),
@@ -89,7 +103,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     color: Colors.grey,
                                     height: 1.5))),
                         Text(hospital.jenis_rs,
@@ -97,7 +110,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     color: Colors.grey,
                                     height: 1.5))),
                         const SizedBox(height: 10),
@@ -106,7 +118,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     fontWeight: FontWeight.w600,
                                     color: Color.fromARGB(1000, 4, 167, 119),
                                     height: 1.5))),
@@ -115,7 +126,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     color: Color.fromARGB(1000, 18, 18, 18),
                                     height: 1.5))),
                         Text("Kecamatan: ",
@@ -123,7 +133,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     fontWeight: FontWeight.w600,
                                     color: Color.fromARGB(1000, 4, 167, 119),
                                     height: 1.5))),
@@ -132,7 +141,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     color: Color.fromARGB(1000, 18, 18, 18),
                                     height: 1.5))),
                         Text("Kabupaten/Kota: ",
@@ -140,7 +148,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     fontWeight: FontWeight.w600,
                                     color: Color.fromARGB(1000, 4, 167, 119),
                                     height: 1.5))),
@@ -149,7 +156,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     color: Color.fromARGB(1000, 18, 18, 18),
                                     height: 1.5))),
                         Text("Telepon: ",
@@ -157,7 +163,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     fontWeight: FontWeight.w600,
                                     color: Color.fromARGB(1000, 4, 167, 119),
                                     height: 1.5))),
@@ -166,7 +171,6 @@ class HospitalDetail extends StatelessWidget {
                             style: GoogleFonts.lato(
                                 textStyle: const TextStyle(
                                     fontSize: 16,
-                                    letterSpacing: 1.5,
                                     color: Color.fromARGB(1000, 18, 18, 18),
                                     height: 1.5))),
                       ]),

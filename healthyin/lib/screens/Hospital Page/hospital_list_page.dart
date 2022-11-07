@@ -1,12 +1,14 @@
 // Tutorial: https://www.youtube.com/watch?v=H3CCtCmBUoQ&t=520s
 
 // ignore_for_file: prefer_const_constructors
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/model/hospital_model.dart';
 import 'package:healthyin/widget/hotel_card.dart';
+import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
+import 'package:healthyin/controller/auth_controller.dart';
 
 class HospitalListPage extends StatefulWidget {
   const HospitalListPage({super.key});
@@ -16,6 +18,7 @@ class HospitalListPage extends StatefulWidget {
 }
 
 class _HospitalListPageState extends State<HospitalListPage> {
+  var data = Get.arguments;
   final _hospitalSearchController = TextEditingController();
   //var selectedCity = "Semua kabupaten/kota";
 
@@ -111,7 +114,22 @@ class _HospitalListPageState extends State<HospitalListPage> {
                   fit: BoxFit.cover)),
           child: Column(
             children: [
-              SizedBox(height: 0.1 * h),
+              SizedBox(height: 0.05 * h),
+              GestureDetector(
+                  onTap: () {
+                    Get.offAll(() => HealthyInMainPage(
+                        email: AuthController().auth.currentUser!.email!));
+                  },
+                  child: Row(children: [
+                    const BackButton(
+                        color: Color.fromARGB(1000, 255, 255, 255)),
+                    Text("Beranda",
+                        style: GoogleFonts.lato(
+                            fontSize: 14,
+                            height: 1,
+                            color: const Color.fromARGB(1000, 255, 255, 255)))
+                  ])),
+              SizedBox(height: 0.01 * h),
               Container(
                   width: w,
                   height: 40,

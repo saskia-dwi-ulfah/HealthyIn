@@ -6,6 +6,8 @@ Nama, usia, jenis kelamin
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/controller/auth_controller.dart';
+import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_2.dart';
 
 class FirstPageScreening extends StatefulWidget {
@@ -211,7 +213,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              //Button Sebelumnya
+              //Button Keluar
               Container(
                 width: 152,
                 height: 40,
@@ -222,9 +224,11 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     child: Text(
-                      'Sebelumnya',
+                      'Keluar',
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 4, 167, 119),

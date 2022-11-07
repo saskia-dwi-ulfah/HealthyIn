@@ -82,7 +82,6 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                           letterSpacing: 0.5,
                           color: Color.fromARGB(1000, 255, 255, 255),
                           height: 1.5)))),
-
           //Spacing between (question and options) and 'Self Screening COVID-19' text
           SizedBox(height: 0.18 * h),
           /*All questions start here*/

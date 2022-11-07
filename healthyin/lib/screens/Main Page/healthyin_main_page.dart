@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
+import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_1.dart';
 
 class HealthyInMainPage extends StatelessWidget {
@@ -60,6 +61,27 @@ class HealthyInMainPage extends StatelessWidget {
                       color: const Color.fromARGB(1000, 134, 22, 87)),
                   child: const Center(
                     child: Text("Skrining Mandiri",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
+                  )),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.to(() => const HospitalListPage(), arguments: email);
+              },
+              child: Container(
+                  width: w * 0.5,
+                  height: h * 0.08,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: const Color.fromARGB(1000, 134, 22, 87)),
+                  child: const Center(
+                    child: Text("Daftar Rumah Sakit",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
