@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
+import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 
 class MildRecommendation extends StatelessWidget {
@@ -28,8 +29,8 @@ class MildRecommendation extends StatelessWidget {
             SizedBox(height: 0.05 * h),
             GestureDetector(
               onTap: () {
-                Get.offAll(
-                    () => HealthyInMainPage(email: data['identity']['email']));
+                Get.offAll(() => HealthyInMainPage(
+                    email: AuthController().auth.currentUser!.email!));
               },
               child: Row(children: [
                 const BackButton(color: Color.fromARGB(1000, 18, 18, 18)),
@@ -123,8 +124,3 @@ class MildRecommendation extends StatelessWidget {
     );
   }
 }
-
-/*
-Fixing problem: why when screening result is generated, there is some lag. The PDF shows previous screening result. 
-We need to 'back' and repress 'Unduh Hasil Screening' to be able to see current screening result.
- */

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
+import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 
@@ -29,8 +30,8 @@ class SevereRecommendation extends StatelessWidget {
             SizedBox(height: 0.05 * h),
             GestureDetector(
               onTap: () {
-                Get.offAll(
-                    () => HealthyInMainPage(email: data['identity']['email']));
+                Get.offAll(() => HealthyInMainPage(
+                    email: AuthController().auth.currentUser!.email!));
               },
               child: Row(children: [
                 const BackButton(color: Color.fromARGB(1000, 18, 18, 18)),

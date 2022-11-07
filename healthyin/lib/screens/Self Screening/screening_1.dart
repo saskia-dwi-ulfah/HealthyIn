@@ -225,7 +225,8 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () {
-                      Get.back();
+                      Get.offAll(() => HealthyInMainPage(
+                          email: AuthController().auth.currentUser!.email!));
                     },
                     child: Text(
                       'Keluar',
