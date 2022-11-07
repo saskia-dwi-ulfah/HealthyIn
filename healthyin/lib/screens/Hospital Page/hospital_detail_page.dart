@@ -58,69 +58,120 @@ class HospitalDetail extends StatelessWidget {
                 height: 140,
               ),
               Container(
-                  height: 0.55 * h,
-                  margin: const EdgeInsets.only(left: 20, right: 20),
-                  width: w,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 3,
-                            offset: Offset(0, 0.5))
+                height: 0.55 * h,
+                width: w,
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 3,
+                          offset: Offset(0, 0.5))
+                    ]),
+                child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(hospital.nama_rs,
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w900,
+                                    letterSpacing: 1.5,
+                                    color: Color.fromARGB(1000, 134, 22, 87),
+                                    height: 1.5))),
+                        Text(hospital.kode_rs.toString(),
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    color: Colors.grey,
+                                    height: 1.5))),
+                        Text(hospital.jenis_rs,
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    color: Colors.grey,
+                                    height: 1.5))),
+                        const SizedBox(height: 10),
+                        Text("Alamat: ",
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color.fromARGB(1000, 4, 167, 119),
+                                    height: 1.5))),
+                        Text(hospital.alamat,
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    color: Color.fromARGB(1000, 18, 18, 18),
+                                    height: 1.5))),
+                        Text("Kecamatan: ",
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color.fromARGB(1000, 4, 167, 119),
+                                    height: 1.5))),
+                        Text(hospital.kecamatan,
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    color: Color.fromARGB(1000, 18, 18, 18),
+                                    height: 1.5))),
+                        Text("Kabupaten/Kota: ",
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color.fromARGB(1000, 4, 167, 119),
+                                    height: 1.5))),
+                        Text(hospital.kab_kota,
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    color: Color.fromARGB(1000, 18, 18, 18),
+                                    height: 1.5))),
+                        Text("Telepon: ",
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color.fromARGB(1000, 4, 167, 119),
+                                    height: 1.5))),
+                        Text(hospital.telepon,
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 16,
+                                    letterSpacing: 1.5,
+                                    color: Color.fromARGB(1000, 18, 18, 18),
+                                    height: 1.5))),
                       ]),
-                  child: Column(children: [
-                    Text(hospital.nama_rs,
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 1.5,
-                                color: Color.fromARGB(1000, 4, 167, 119),
-                                height: 1.5))),
-                    Text(hospital.jenis_rs,
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                letterSpacing: 1.5,
-                                color: Color.fromARGB(1000, 4, 167, 119),
-                                height: 1.5))),
-                    Text(hospital.alamat,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                letterSpacing: 1.5,
-                                color: Color.fromARGB(1000, 4, 167, 119),
-                                height: 1.5))),
-                    Text(hospital.kecamatan,
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                letterSpacing: 1.5,
-                                color: Color.fromARGB(1000, 4, 167, 119),
-                                height: 1.5))),
-                    Text(hospital.kab_kota,
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                letterSpacing: 1.5,
-                                color: Color.fromARGB(1000, 4, 167, 119),
-                                height: 1.5))),
-                    Text(hospital.telepon,
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                letterSpacing: 1.5,
-                                color: Color.fromARGB(1000, 4, 167, 119),
-                                height: 1.5))),
-                  ]))
+                ),
+              ),
             ])));
   }
 }
