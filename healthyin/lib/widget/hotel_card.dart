@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/model/hospital_model.dart';
+import 'package:healthyin/screens/Hospital%20Page/hospital_detail_page.dart';
 
 // Build hospital card for each record in snapshot
 Widget buildHospitalCard(BuildContext context, DocumentSnapshot document) {
@@ -58,7 +59,7 @@ Widget buildHospitalCard(BuildContext context, DocumentSnapshot document) {
         ),
       ),
       onTap: () {
-        Get.to
+        Get.to(HospitalDetail(hospital: hospital));
       },
     ),
   );

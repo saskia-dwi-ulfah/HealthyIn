@@ -221,7 +221,7 @@ class _HospitalListPageState extends State<HospitalListPage> {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Colors.grey,
                           blurRadius: 3,
