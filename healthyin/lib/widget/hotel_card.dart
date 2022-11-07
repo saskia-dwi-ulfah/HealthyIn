@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/model/hospital_model.dart';
 
@@ -14,42 +15,51 @@ Widget buildHospitalCard(BuildContext context, DocumentSnapshot document) {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: Row(children: <Widget>[
                 Text(
                   hospital.nama_rs,
-                  style: GoogleFonts.lato(fontSize: 10.0),
+                  style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(1000, 4, 167, 119),
+                          height: 1.4)),
+                ),
+              ]),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4.0),
+              child: Row(children: <Widget>[
+                Text(
+                  hospital.jenis_rs,
+                  style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 13, color: Colors.grey, height: 1.4)),
                 ),
                 const Spacer(),
               ]),
             ),
-            /* Padding(
-              padding: const EdgeInsets.only(top: 4.0, bottom: 80.0),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
               child: Row(children: <Widget>[
                 Text(
-                    "${DateFormat('MM/dd/yyyy').format(trip.startDate).toString()} - ${DateFormat('MM/dd/yyyy').format(trip.endDate).toString()}"),
-                Spacer(),
+                  hospital.kab_kota,
+                  style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 13,
+                          color: Color.fromARGB(1000, 18, 18, 18),
+                          height: 1.4)),
+                ),
+                const Spacer(),
               ]),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "\$${(trip.budget == null) ? "n/a" : trip.budget.toStringAsFixed(2)}",
-                    style: new TextStyle(fontSize: 35.0),
-                  ),
-                  Spacer(),
-                  (tripType.containsKey(trip.travelType))
-                      ? tripType[trip.travelType]
-                      : tripType["other"],
-                ],
-              ),
-            )*/
+            )
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        Get.to
+      },
     ),
   );
 }

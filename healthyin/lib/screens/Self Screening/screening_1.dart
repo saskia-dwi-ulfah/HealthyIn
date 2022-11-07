@@ -144,10 +144,25 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           });
                         },
                         items: [
-                          const DropdownMenuItem(
-                              value: "Pria", child: Text("Pria")),
-                          const DropdownMenuItem(
-                              value: "Wanita", child: Text("Wanita"))
+                          DropdownMenuItem(
+                              value: "Pria",
+                              child: Text(
+                                "Pria",
+                                style: GoogleFonts.lato(
+                                    textStyle: const TextStyle(
+                                        fontSize: 16,
+                                        color: Color.fromARGB(1000, 18, 18, 18),
+                                        height: 1.4)),
+                              )),
+                          DropdownMenuItem(
+                              value: "Wanita",
+                              child: Text("Wanita",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color:
+                                              Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4))))
                         ]),
                   ),
                   const SizedBox(height: 10),

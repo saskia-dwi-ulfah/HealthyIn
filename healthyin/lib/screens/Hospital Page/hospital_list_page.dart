@@ -17,7 +17,7 @@ class HospitalListPage extends StatefulWidget {
 
 class _HospitalListPageState extends State<HospitalListPage> {
   final _hospitalSearchController = TextEditingController();
-  var selectedCity = "";
+  //var selectedCity = "Semua kabupaten/kota";
 
   late Future resultsLoaded;
   List _allResults = [];
@@ -52,16 +52,32 @@ class _HospitalListPageState extends State<HospitalListPage> {
     if (_hospitalSearchController.text != "") {
       // we have a search parameter
       for (var hospitalSnapshot in _allResults) {
-        var title =
+        var hospital =
             HospitalModel.fromSnapshot(hospitalSnapshot).nama_rs.toLowerCase();
 
-        if (title.contains(_hospitalSearchController.text.toLowerCase())) {
+        var kabKota =
+            HospitalModel.fromSnapshot(hospitalSnapshot).kab_kota.toLowerCase();
+
+        if (hospital.contains(_hospitalSearchController.text.toLowerCase()) ||
+            kabKota.contains(_hospitalSearchController.text.toLowerCase())) {
           showResults.add(hospitalSnapshot);
         }
       }
     } else {
       showResults = List.from(_allResults);
     }
+
+    /*if (selectedCity != "Semua kabupaten/kota") {
+      // we have a search parameter
+      for (var hospitalSnapshot in _allResults) {
+        var title =
+            HospitalModel.fromSnapshot(hospitalSnapshot).kab_kota.toLowerCase();
+
+        if (title == selectedCity) {
+          showResults.add(hospitalSnapshot);
+        }
+      }
+    }*/
 
     setState(() {
       _resultsList = showResults;
@@ -86,82 +102,159 @@ class _HospitalListPageState extends State<HospitalListPage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-        ),
-        body: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Lihat Rumah Sakit di D.I. Yogyakarta",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-                ),
-                SizedBox(height: 10),
-                SizedBox(
-                  height: 55,
+        body: Container(
+          height: h,
+          width: w,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/self_screening_bg_x2.png"),
+                  fit: BoxFit.cover)),
+          child: Column(
+            children: [
+              SizedBox(height: 0.1 * h),
+              Container(
                   width: w,
-                  child: DropdownButton(
-                      value: selectedCity,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedCity = newValue!;
-                        });
-                      },
-                      items: const [
-                        DropdownMenuItem(
-                            value: "Semua kabupaten/kota",
-                            child: Text("Semua kabupaten/kota")),
-                        DropdownMenuItem(
-                            value: "Sleman", child: Text("Sleman")),
-                        DropdownMenuItem(
-                            value: "Gunung Kidul", child: Text("Gunung Kidul")),
-                        DropdownMenuItem(
-                            value: "Kulon Progo", child: Text("Kulon Progo")),
-                        DropdownMenuItem(
-                            value: "Bantul", child: Text("Bantul")),
-                        DropdownMenuItem(
-                            value: "Kota Yogyakarta",
-                            child: Text("Kota Yogyakarta"))
-                      ]),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  height: 55,
+                  height: 40,
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text("Daftar Rumah",
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              color: Color.fromARGB(1000, 255, 255, 255),
+                              height: 1.5)))),
+              Container(
                   width: w,
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(1000, 241, 241, 241),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: TextField(
-                    controller: _hospitalSearchController,
-                    decoration: InputDecoration(
-                        hintText: "Masukkan nama rumah sakit",
-                        hintStyle: GoogleFonts.lato(
-                            fontSize: 16, color: Colors.grey[500]),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                width: 1.5)),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: const BorderSide(
-                                color: Colors.white, width: 1.0)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12))),
-                  ),
+                  height: 40,
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text("Sakit di",
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              color: Color.fromARGB(1000, 255, 255, 255),
+                              height: 1.5)))),
+              Container(
+                  width: w,
+                  height: 40,
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text("D.I. Yogyakarta",
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              color: Color.fromARGB(1000, 255, 255, 255),
+                              height: 1.5)))),
+              /*  SizedBox(height: 10),
+                  SizedBox(
+                    height: 55,
+                    width: w,
+                    child: DropdownButton(
+                        value: selectedCity,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedCity = newValue!;
+                          });
+                          print(newValue);
+                        },
+                        items: [
+                          DropdownMenuItem(
+                              value: "Semua kabupaten/kota",
+                              child: Text("Semua kabupaten/kota",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4)))),
+                          DropdownMenuItem(
+                              value: "Sleman",
+                              child: Text("Sleman",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4)))),
+                          DropdownMenuItem(
+                              value: "Gunung Kidul",
+                              child: Text("Gunung Kidul",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4)))),
+                          DropdownMenuItem(
+                              value: "Kulon Progo",
+                              child: Text("Kulon Progo",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4)))),
+                          DropdownMenuItem(
+                              value: "Bantul",
+                              child: Text("Bantul",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4)))),
+                          DropdownMenuItem(
+                              value: "Kota Yogyakarta",
+                              child: Text("Kota Yogyakarta",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromARGB(1000, 18, 18, 18),
+                                          height: 1.4))))
+                        ]),
+                  ),*/
+              SizedBox(height: 30),
+              Container(
+                height: 55,
+                width: w * 0.85,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 3,
+                          offset: Offset(0, 0.5))
+                    ]),
+                child: TextField(
+                  controller: _hospitalSearchController,
+                  decoration: InputDecoration(
+                      hintText: "Masukkan nama kota atau nama rumah sakit",
+                      hintStyle: GoogleFonts.lato(
+                          fontSize: 12, color: Colors.grey[500]),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(1000, 18, 18, 18),
+                              width: 1.5)),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(
+                              color: Colors.white, width: 1.0)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12))),
                 ),
-                SizedBox(height: 10),
-                Expanded(
-                    child: ListView.builder(
-                  itemCount: _resultsList.length,
-                  itemBuilder: (BuildContext context, int index) =>
-                      buildHospitalCard(context, _resultsList[index]),
-                ))
-              ],
-            )));
+              ),
+              SizedBox(height: 20),
+              Expanded(
+                  child: ListView.builder(
+                itemCount: _resultsList.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    buildHospitalCard(context, _resultsList[index]),
+              ))
+            ],
+          ),
+        ));
   }
 }
