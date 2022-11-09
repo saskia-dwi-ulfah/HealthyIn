@@ -110,7 +110,7 @@ class _HospitalListPageState extends State<HospitalListPage> {
           width: w,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/self_screening_bg_x2.png"),
+                  image: AssetImage("assets/images/hospital_bg_x2.png"),
                   fit: BoxFit.cover)),
           child: Column(
             children: [

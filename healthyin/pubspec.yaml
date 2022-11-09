@@ -85,6 +85,7 @@ flutter:
    - assets/images/splashscreen_bg_x2.png
    - assets/images/self_screening_bg.png
    - assets/images/self_screening_bg_x2.png
+   - assets/images/hospital_bg_x2.png
    - assets/images/login_top_right.png
    - assets/images/login_bottom_left.png
    - assets/images/mild_x2.png
