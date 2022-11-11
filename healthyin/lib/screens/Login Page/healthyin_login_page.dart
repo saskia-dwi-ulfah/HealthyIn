@@ -256,8 +256,9 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.bold)),
                     recognizer: TapGestureRecognizer()
-                      ..onTap =
-                          () => Get.to(() => const HealthyInSignupScreen()))
+                      ..onTap = () => Get.to(
+                          () => const HealthyInSignupScreen(),
+                          transition: Transition.zoom))
               ])),
           const SizedBox(height: 30),
           Container(
