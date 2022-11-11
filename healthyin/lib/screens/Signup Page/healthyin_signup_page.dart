@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 
 //https://stackoverflow.com/questions/58722426/text-input-value-is-disappearing-flutter
+var nameController = TextEditingController();
 var emailController = TextEditingController();
 var passwordController = TextEditingController();
 
@@ -39,7 +40,7 @@ class HealthyInSignupScreen extends StatelessWidget {
           ),
           Container(
             width: w,
-            height: 0.42 * h,
+            height: 0.5 * h,
             color: Colors.white,
             margin: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
@@ -60,6 +61,44 @@ class HealthyInSignupScreen extends StatelessWidget {
                               fontSize: 18, color: Colors.grey[500]))),
                   const SizedBox(
                     height: 50,
+                  ),
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Nama lengkap",
+                        style: GoogleFonts.lato(
+                            textStyle: const TextStyle(
+                                fontSize: 16,
+                                color: Color.fromARGB(1000, 18, 18, 18)),
+                            fontWeight: FontWeight.bold),
+                      )),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    width: w,
+                    height: 55,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(1000, 241, 241, 241),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  width: 1.5)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                  color: Colors.white, width: 1.0)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12))),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Align(
                       alignment: Alignment.topLeft,
@@ -169,7 +208,7 @@ class HealthyInSignupScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          /* const SizedBox(height: 20),
           Container(
             width: w,
             height: 0.1 * h,
@@ -218,7 +257,7 @@ class HealthyInSignupScreen extends StatelessWidget {
                 ),
               ]),
             ),
-          ),
+          ),*/
           const SizedBox(height: 10),
           RichText(
               text: TextSpan(
@@ -237,6 +276,7 @@ class HealthyInSignupScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold)),
                 )
               ])),
+          const SizedBox(height: 30),
           Container(
             height: 0.125 * h,
             color: Colors.white,

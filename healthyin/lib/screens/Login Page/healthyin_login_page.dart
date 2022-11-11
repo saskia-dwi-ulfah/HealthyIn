@@ -44,7 +44,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
           ),
           Container(
             width: w,
-            height: 0.42 * h,
+            height: 0.5 * h,
             color: Colors.white,
             margin: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
@@ -190,8 +190,8 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Container(
+          /*const SizedBox(height: 20),
+                  Container(
             width: w,
             height: 0.1 * h,
             margin: const EdgeInsets.only(left: 20, right: 20),
@@ -239,7 +239,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                 ),
               ]),
             ),
-          ),
+          )*/
           const SizedBox(height: 10),
           RichText(
               text: TextSpan(
@@ -259,6 +259,7 @@ class _HealthyInLoginScreenState extends State<HealthyInLoginScreen> {
                       ..onTap =
                           () => Get.to(() => const HealthyInSignupScreen()))
               ])),
+          const SizedBox(height: 30),
           Container(
             height: 0.125 * h,
             color: Colors.white,

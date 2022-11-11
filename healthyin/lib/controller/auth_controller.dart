@@ -73,7 +73,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void signInAndLogInWithGoogle() async {
+  /*void signInAndLogInWithGoogle() async {
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
 
@@ -124,7 +124,7 @@ class AuthController extends GetxController {
             )); // handle the error here
       }
     }
-  }
+  } */
 
   void logout() async {
     await auth.signOut();
