@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:healthyin/model/hospital_model.dart';
@@ -172,6 +173,35 @@ class HospitalDetail extends StatelessWidget {
                                     fontSize: 16,
                                     color: Color.fromARGB(1000, 18, 18, 18),
                                     height: 1.5))),
+                        const SizedBox(height: 20),
+                        GestureDetector(
+                          onTap: () {
+                            MapsLauncher.launchQuery(hospital.nama_rs);
+                          },
+                          child: Container(
+                            width: w,
+                            height: 45,
+                            margin: const EdgeInsets.only(left: 20, right: 20),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topRight,
+                                    colors: [
+                                      Color.fromARGB(1000, 134, 22, 87),
+                                      Color.fromARGB(1000, 193, 31, 126)
+                                    ])),
+                            child: Center(
+                              child: Text("Buka Lokasi di Google Maps",
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      color: Colors.white)),
+                            ),
+                          ),
+                        )
                       ]),
                 ),
               ),

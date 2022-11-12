@@ -48,6 +48,7 @@ dependencies:
   path_provider:
   pdf:
   url_launcher: ^6.0.20
+  maps_launcher:
 
 dev_dependencies:
   flutter_test:

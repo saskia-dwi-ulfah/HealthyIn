@@ -3,16 +3,13 @@
 /*
 Chat with doctor
 */
-import 'dart:io';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class MildRecommendation extends StatelessWidget {
   const MildRecommendation({super.key});
