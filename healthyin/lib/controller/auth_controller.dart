@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 import 'package:healthyin/screens/Login%20Page/healthyin_login_page.dart';
 
@@ -13,9 +12,8 @@ class AuthController extends GetxController {
   static final AuthController instance = Get.find();
   //coming from Firebase authentication and save user information
   FirebaseAuth auth = FirebaseAuth.instance;
-
-  //for Google sign in method
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  //for storing user info into Firestore
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   //declare Firebase user
   late Rx<User?> _user;
@@ -40,10 +38,16 @@ class AuthController extends GetxController {
     }
   }
 
-  void register(String email, password) async {
+  void register(String name, String email, password) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+
+      await users.add({
+        'authenticated_user_id': auth.currentUser!.uid,
+        'email': auth.currentUser!.email,
+        'name': name,
+      });
     } catch (e) {
       Get.snackbar("About User", "User message",
           backgroundColor: Colors.redAccent,
@@ -130,7 +134,3 @@ class AuthController extends GetxController {
     await auth.signOut();
   }
 }
-
-/* To do:
-Fixing error Google Login
-*/

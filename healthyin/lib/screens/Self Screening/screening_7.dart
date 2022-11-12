@@ -474,12 +474,18 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       if (finalScore < 5) {
                         Get.offAll(() => const MildRecommendation(),
                             arguments: data);
+
+                        data['screening_result'] = 'Risiko ringan';
                       } else if (finalScore >= 5 && finalScore <= 7) {
                         Get.offAll(() => const ModerateRecommendation(),
                             arguments: data);
+
+                        data['screening_result'] = 'Risiko sedang';
                       } else if (finalScore > 7) {
                         Get.offAll(() => const SevereRecommendation(),
                             arguments: data);
+
+                        data['screening_result'] = 'Risiko berat';
                       }
 
                       //save data to Firestore
@@ -491,7 +497,9 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                         'fourth_page': data['fourth_page'],
                         'fifth_page': data['fifth_page'],
                         'sixth_page': data['sixth_page'],
-                        'seventh_page': data['seventh_page']
+                        'seventh_page': data['seventh_page'],
+                        'score': finalScore,
+                        'screening_result': data['screening_result'],
                         // ignore: avoid_print
                       }).then((value) => print('Data successfully submitted'));
                     },

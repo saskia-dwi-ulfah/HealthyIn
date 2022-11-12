@@ -127,8 +127,3 @@ class SevereRecommendation extends StatelessWidget {
     );
   }
 }
-
-/*
-Fixing problem: why when screening result is generated, there is some lag. The PDF shows previous screening result. 
-We need to 'back' and repress 'Unduh Hasil Screening' to be able to see current screening result.
- */

@@ -1,12 +1,18 @@
+// ignore_for_file: deprecated_member_use, prefer_const_constructors
+
 /*
 Chat with doctor
 */
+import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MildRecommendation extends StatelessWidget {
   const MildRecommendation({super.key});
@@ -17,6 +23,20 @@ class MildRecommendation extends StatelessWidget {
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+
+    openWhatsApp() async {
+      String number = "+6282133293450";
+      String message =
+          "Halo, saya ingin mengonsultasikan hasil skrining mandiri dari aplikasi HealthyIn.";
+
+      try {
+        String url = "whatsapp://send?phone=$number&text=$message";
+        await launchUrlString(url);
+      } catch (e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Can't open WhatsApp.")));
+      }
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -83,7 +103,9 @@ class MildRecommendation extends StatelessWidget {
               width: w,
               color: Colors.white,
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    openWhatsApp();
+                  },
                   style: TextButton.styleFrom(
                       backgroundColor: const Color.fromARGB(1000, 4, 167, 119),
                       shape: const RoundedRectangleBorder(

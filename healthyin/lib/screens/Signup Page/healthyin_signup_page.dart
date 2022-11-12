@@ -4,13 +4,17 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 
-//https://stackoverflow.com/questions/58722426/text-input-value-is-disappearing-flutter
-var nameController = TextEditingController();
-var emailController = TextEditingController();
-var passwordController = TextEditingController();
-
-class HealthyInSignupScreen extends StatelessWidget {
+class HealthyInSignupScreen extends StatefulWidget {
   const HealthyInSignupScreen({super.key});
+
+  @override
+  State<HealthyInSignupScreen> createState() => _HealthyInSignupScreenState();
+}
+
+class _HealthyInSignupScreenState extends State<HealthyInSignupScreen> {
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -180,9 +184,9 @@ class HealthyInSignupScreen extends StatelessWidget {
             height: 10,
           ),
           GestureDetector(
-            onTap: () {
-              AuthController.instance
-                  .register(emailController.text, passwordController.text);
+            onTap: () async {
+              AuthController.instance.register(nameController.text,
+                  emailController.text, passwordController.text);
             },
             child: Container(
               width: w,
@@ -267,7 +271,10 @@ class HealthyInSignupScreen extends StatelessWidget {
                       fontSize: 16),
                   children: [
                 TextSpan(
-                  recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.back();
+                    },
                   text: " Masuk",
                   style: GoogleFonts.lato(
                       textStyle: const TextStyle(

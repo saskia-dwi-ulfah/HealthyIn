@@ -252,9 +252,11 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                     onPressed: () {
                       allData['identity'] = {
                         'email': Get.arguments,
+                        'authenticated_user_id':
+                            AuthController().auth.currentUser!.uid,
                         'nama': nameController.text.trim(),
                         'gender': selectedGender,
-                        'usia': int.parse(ageController.text.trim())
+                        'usia': int.parse(ageController.text.trim()),
                       };
 
                       Get.to(() => const SecondPageScreening(),
