@@ -1,5 +1,5 @@
 // ignore_for_file: sized_box_for_whitespace, must_be_immutable
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,9 +7,28 @@ import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_1.dart';
 
-class HealthyInMainPage extends StatelessWidget {
+class HealthyInMainPage extends StatefulWidget {
   String email;
   HealthyInMainPage({Key? key, required this.email}) : super(key: key);
+
+  @override
+  State<HealthyInMainPage> createState() => _HealthyInMainPageState();
+}
+
+class _HealthyInMainPageState extends State<HealthyInMainPage> {
+  //checking for fetching active user's name
+  var name;
+
+  getUserName() async {
+    var collection = FirebaseFirestore.instance.collection('users');
+
+    await collection
+        .where("email", isEqualTo: AuthController().auth.currentUser!.email)
+        .get()
+        .then((doc) {
+      name = doc.docs[0]["name"];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +51,7 @@ class HealthyInMainPage extends StatelessWidget {
                     radius: 50,
                     backgroundColor: Color.fromARGB(1000, 4, 167, 119)),
                 const SizedBox(height: 10),
-                Text(email,
+                Text(widget.email,
                     style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             fontSize: 16,
@@ -44,7 +63,49 @@ class HealthyInMainPage extends StatelessWidget {
             )),
             ListTile(
               onTap: () {
-                AuthController.instance.logout();
+                showDialog(
+                    context: context,
+                    builder: ((context) => AlertDialog(
+                          title: Text('Logout',
+                              style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 0.5,
+                                      color: Color.fromARGB(1000, 134, 22, 87),
+                                      height: 1.4))),
+                          content: Text('Yakin ingin keluar?',
+                              style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                      fontSize: 16,
+                                      letterSpacing: 0.5,
+                                      color: Colors.black,
+                                      height: 1.4))),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  AuthController.instance.logout();
+                                },
+                                child: Text('OK',
+                                    style: GoogleFonts.lato(
+                                        textStyle: const TextStyle(
+                                            letterSpacing: 0.5,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                            height: 1.4)))),
+                            TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text('Batal',
+                                    style: GoogleFonts.lato(
+                                        textStyle: const TextStyle(
+                                            letterSpacing: 0.5,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                            height: 1.4))))
+                          ],
+                        )));
               },
               title: Text("Keluar",
                   style: GoogleFonts.lato(
@@ -89,15 +150,30 @@ class HealthyInMainPage extends StatelessWidget {
             width: w,
             height: 40,
             margin: const EdgeInsets.only(left: 20, right: 20),
-            child: Text("Capbatu Kesehatan",
-                textAlign: TextAlign.start,
-                style: GoogleFonts.lato(
-                    textStyle: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 0.5,
-                        color: Color.fromARGB(1000, 255, 255, 255),
-                        height: 1.5))),
+            child: FutureBuilder(
+              future: getUserName(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return Text("...",
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              color: Color.fromARGB(1000, 255, 255, 255),
+                              height: 1.5)));
+                } else {
+                  return Text(name,
+                      style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.5,
+                              color: Color.fromARGB(1000, 255, 255, 255),
+                              height: 1.5)));
+                }
+              },
+            ),
           ),
           //Space between
           SizedBox(height: 0.12 * h),
@@ -173,8 +249,63 @@ class HealthyInMainPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(12)),
                               ),
                               onPressed: () {
-                                Get.to(() => const FirstPageScreening(),
-                                    arguments: email);
+                                showDialog(
+                                    context: context,
+                                    builder: ((context) => AlertDialog(
+                                          title: Text('Disclaimer',
+                                              style: GoogleFonts.lato(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 24,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      letterSpacing: 0.5,
+                                                      color: Color.fromARGB(
+                                                          1000, 134, 22, 87),
+                                                      height: 1.4))),
+                                          content: Text(
+                                              'Fitur Skrining Mandiri COVID-19 ini tidak dapat dijadikan sebagai satu-satunya petunjuk indikasi medis tertentu. Dengan menekan tombol OK kamu menyetujui untuk menyelesaikan skrining sampai terakhir.',
+                                              style: GoogleFonts.lato(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 16,
+                                                      letterSpacing: 0.5,
+                                                      color: Colors.black,
+                                                      height: 1.4))),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.to(
+                                                      const FirstPageScreening());
+                                                },
+                                                child: Text('OK',
+                                                    style: GoogleFonts.lato(
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                letterSpacing:
+                                                                    0.5,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                                height: 1.4)))),
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text('Batal',
+                                                    style: GoogleFonts.lato(
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                letterSpacing:
+                                                                    0.5,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                                height: 1.4))))
+                                          ],
+                                        )));
                               },
                               child: Text(
                                 'Mulai',
@@ -246,7 +377,7 @@ class HealthyInMainPage extends StatelessWidget {
                               ),
                               onPressed: () {
                                 Get.to(() => const HospitalListPage(),
-                                    arguments: email);
+                                    arguments: widget.email);
                               },
                               child: Text(
                                 'Cari',
@@ -322,7 +453,48 @@ class HealthyInMainPage extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12)),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: ((context) => AlertDialog(
+                                          title: Text('Maaf ya...',
+                                              style: GoogleFonts.lato(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 24,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      letterSpacing: 0.5,
+                                                      color: Color.fromARGB(
+                                                          1000, 134, 22, 87),
+                                                      height: 1.4))),
+                                          content: Text(
+                                              'Untuk saat ini fitur Chat Konsultasi Dokter hanya dapat diakses melalui fitur Skrining Mandiri COVID-19.',
+                                              style: GoogleFonts.lato(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 16,
+                                                      letterSpacing: 0.5,
+                                                      color: Colors.black,
+                                                      height: 1.4))),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text('OK',
+                                                    style: GoogleFonts.lato(
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                letterSpacing:
+                                                                    0.5,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                                height: 1.4))))
+                                          ],
+                                        )));
+                              },
                               child: Text(
                                 'Chat',
                                 textAlign: TextAlign.center,
@@ -391,7 +563,48 @@ class HealthyInMainPage extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12)),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: ((context) => AlertDialog(
+                                          title: Text('Maaf ya...',
+                                              style: GoogleFonts.lato(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 24,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      letterSpacing: 0.5,
+                                                      color: Color.fromARGB(
+                                                          1000, 134, 22, 87),
+                                                      height: 1.4))),
+                                          content: Text(
+                                              'Fitur ini sedang dikembangkan.',
+                                              style: GoogleFonts.lato(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 16,
+                                                      letterSpacing: 0.5,
+                                                      color: Colors.black,
+                                                      height: 1.4))),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text('OK',
+                                                    style: GoogleFonts.lato(
+                                                        textStyle:
+                                                            const TextStyle(
+                                                                letterSpacing:
+                                                                    0.5,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                                height: 1.4))))
+                                          ],
+                                        )));
+                              },
                               child: Text(
                                 'Baca',
                                 textAlign: TextAlign.center,
@@ -413,102 +626,5 @@ class HealthyInMainPage extends StatelessWidget {
         ]),
       ),
     );
-
-    /*return Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Container(width: w, height: 0.3 * h),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: w,
-              margin: const EdgeInsets.only(left: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Welcome",
-                      style: GoogleFonts.lato(
-                          textStyle: const TextStyle(
-                              fontSize: 36,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54))),
-                  Text(email,
-                      style: GoogleFonts.lato(
-                          textStyle: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54)))
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-              onTap: () {
-                Get.to(() => const FirstPageScreening(), arguments: email);
-              },
-              child: Container(
-                  width: w * 0.5,
-                  height: h * 0.08,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: const Color.fromARGB(1000, 134, 22, 87)),
-                  child: const Center(
-                    child: Text("Skrining Mandiri",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white)),
-                  )),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-              onTap: () {
-                Get.to(() => const HospitalListPage(), arguments: email);
-              },
-              child: Container(
-                  width: w * 0.5,
-                  height: h * 0.08,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: const Color.fromARGB(1000, 134, 22, 87)),
-                  child: const Center(
-                    child: Text("Daftar Rumah Sakit",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white)),
-                  )),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-              onTap: () {
-                AuthController.instance.logout();
-              },
-              child: Container(
-                width: w * 0.5,
-                height: h * 0.08,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: const Color.fromARGB(1000, 134, 22, 87)),
-                child: const Center(
-                  child: Text("Sign out",
-                      style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white)),
-                ),
-              ),
-            ),
-          ],
-        ));*/
   }
 }
