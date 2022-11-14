@@ -81,6 +81,10 @@ flutter:
    - assets/icons/logo_healthyin.png
    - assets/icons/logo_healthyin_x2.png
    - assets/icons/logo_healthyin_x3.png
+   - assets/icons/article_avatar.png
+   - assets/icons/doctor_avatar.png
+   - assets/icons/rs_avatar.png
+   - assets/icons/screening_avatar.png
    - assets/images/splashscreen_bg.png
    - assets/images/splashscreen_bg_x2.png
    - assets/images/self_screening_bg.png
@@ -91,6 +95,7 @@ flutter:
    - assets/images/mild_x2.png
    - assets/images/moderate_x2.png
    - assets/images/severe_x2.png
+   - assets/images/home_page_x2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
