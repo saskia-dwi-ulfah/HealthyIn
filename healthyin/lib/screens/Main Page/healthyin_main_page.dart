@@ -18,6 +18,47 @@ class HealthyInMainPage extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+                child: Column(
+              children: [
+                const CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Color.fromARGB(1000, 4, 167, 119)),
+                const SizedBox(height: 10),
+                Text(email,
+                    style: GoogleFonts.lato(
+                        textStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: 0.5,
+                            color: Colors.black,
+                            height: 1.4))),
+              ],
+            )),
+            ListTile(
+              onTap: () {
+                AuthController.instance.logout();
+              },
+              title: Text("Keluar",
+                  style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                          fontSize: 14,
+                          letterSpacing: 0.5,
+                          color: Colors.black,
+                          height: 1.4))),
+              leading: const Icon(Icons.logout,
+                  color: Color.fromARGB(1000, 134, 22, 87)),
+            )
+          ],
+        ),
+      ),
       body: Container(
         height: h,
         width: w,
