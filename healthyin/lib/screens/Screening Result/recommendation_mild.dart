@@ -101,7 +101,51 @@ class MildRecommendation extends StatelessWidget {
               color: Colors.white,
               child: TextButton(
                   onPressed: () {
-                    openWhatsApp();
+                    showDialog(
+                        context: context,
+                        builder: ((context) => AlertDialog(
+                              title: Text('Warning',
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 0.5,
+                                          color:
+                                              Color.fromARGB(1000, 134, 22, 87),
+                                          height: 1.4))),
+                              content: Text(
+                                  'Sebelum Anda melakukan konsultasi dengan dokter. Jangan lupa untuk mengunduh hasil skrining mandiri COVID-19 yang telah Anda lakukan sebelumnya.',
+                                  style: GoogleFonts.lato(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          letterSpacing: 0.5,
+                                          color: Colors.black,
+                                          height: 1.4))),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      openWhatsApp();
+                                    },
+                                    child: Text('OK',
+                                        style: GoogleFonts.lato(
+                                            textStyle: const TextStyle(
+                                                letterSpacing: 0.5,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                                height: 1.4)))),
+                                TextButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: Text('Batal',
+                                        style: GoogleFonts.lato(
+                                            textStyle: const TextStyle(
+                                                letterSpacing: 0.5,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                                height: 1.4))))
+                              ],
+                            )));
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: const Color.fromARGB(1000, 4, 167, 119),

@@ -425,7 +425,7 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                       ),
                     )),
               ),
-              //Button Selanjutnya
+              //Button Selesai
               Container(
                 width: 152,
                 height: 40,
@@ -647,6 +647,5 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
 /*
 More improvement:
 - How to make code less repetition?
-- How to change active color of outlined button and its text?
  */
 
