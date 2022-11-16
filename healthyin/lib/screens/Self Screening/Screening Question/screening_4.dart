@@ -1,33 +1,33 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, avoid_print
 
 /*
-Pertanyaan kontak dengan pasien COVID-19 14 hari terakhir
+Pertanyaan suhu tubuh >38 derajat 
 */
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/screens/Self%20Screening/screening_3.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20Question/screening_5.dart';
 
-class SecondPageScreening extends StatefulWidget {
-  const SecondPageScreening({super.key});
+class FourthPageScreening extends StatefulWidget {
+  const FourthPageScreening({super.key});
 
   @override
-  State<SecondPageScreening> createState() => _SecondPageScreeningState();
+  State<FourthPageScreening> createState() => _FourthPageScreeningState();
 }
 
-class _SecondPageScreeningState extends State<SecondPageScreening> {
-  //for storing score from corresponding page
+class _FourthPageScreeningState extends State<FourthPageScreening> {
+  //catch argument from previous screen
   var data = Get.arguments;
 
-  //question 4
-  String question4 =
-      "4. Apakah Anda pernah kontak dengan pasien positif COVID-19 atau berada satu ruangan yang sama atau kontak dalam 1 meter pada 14 hari terakhir? ";
+  //question 6
+  var question6 =
+      "6. Apakah Anda memiliki riwayat suhu tubuh lebih dari 38°C dalam 14 hari terakhir?";
 
-//answer choosed
-  String answer4 = "";
+  //answer choosed
+  String answer6 = "";
 
   //for scoring logic
-  int secondPageScore = 0;
+  int fourthPageScore = 0;
 
   int valueChecked = 0;
 
@@ -84,7 +84,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: const EdgeInsets.only(left: 20, right: 20),
-              child: Text(question4,
+              child: Text(question6,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: const TextStyle(
@@ -125,6 +125,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                     groupValue: valueChecked,
                     onChanged: (value) {
                       setState(() => valueChecked = value!);
+                      print(valueChecked);
                     },
                   )),
               //Option 2
@@ -152,6 +153,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                     groupValue: valueChecked,
                     onChanged: (value) {
                       setState(() => valueChecked = value!);
+                      print(valueChecked);
                     },
                   )),
             ])),
@@ -187,6 +189,7 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                       ),
                     )),
               ),
+
               //Button Selanjutnya
               Container(
                 width: 152,
@@ -199,20 +202,19 @@ class _SecondPageScreeningState extends State<SecondPageScreening> {
                     ),
                     onPressed: () {
                       if (valueChecked == 1) {
-                        secondPageScore = 1;
-                        answer4 = "Ya";
+                        fourthPageScore = 2;
+                        answer6 = "Ya";
                       } else {
-                        secondPageScore = 0;
-                        answer4 = "Tidak";
+                        fourthPageScore = 0;
+                        answer6 = "Tidak";
                       }
-
-                      data['second_page'] = {
-                        'question': question4,
-                        'answer': answer4,
-                        'score': secondPageScore
+                      data['fourth_page'] = {
+                        'question': question6,
+                        'answer': answer6,
+                        'score': fourthPageScore
                       };
 
-                      Get.to(() => const ThirdPageScreening(), arguments: data);
+                      Get.to(() => const FifthPageScreening(), arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',

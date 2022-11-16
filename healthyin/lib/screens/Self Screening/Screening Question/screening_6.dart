@@ -1,41 +1,42 @@
 // ignore_for_file: sized_box_for_whitespace
 
 /*
-Pertanyaan komorbid
+Pertanyaan gejala 14 hari terakhir, layer 2
 */
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/screens/Self%20Screening/screening_6.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20Question/screening_7.dart';
 
-class FifthPageScreening extends StatefulWidget {
-  const FifthPageScreening({super.key});
+class SixthPageScreening extends StatefulWidget {
+  const SixthPageScreening({super.key});
 
   @override
-  State<FifthPageScreening> createState() => _FifthPageScreeningState();
+  State<SixthPageScreening> createState() => _SixthPageScreeningState();
 }
 
-class _FifthPageScreeningState extends State<FifthPageScreening> {
+class _SixthPageScreeningState extends State<SixthPageScreening> {
   //catch argument from previous screen
   var data = Get.arguments;
 
-  //question 7
-  var question7 = "7. Apakah Anda memiliki komorbid/penyakit bawaan berikut?";
+  //question8
+  var question8 =
+      "8. Apakah anda mengalami gejala berikut dalam 14 hari terakhir?";
 
   //answer choosed
   var answerChoosed = {};
 
   //for scoring logic
-  int fifthPageScore = 0;
+  int tempScore = 0;
+  int sixthPageScore = 0;
 
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
   bool isChecked4 = false;
   bool isChecked5 = false;
-  bool isChecked6 = false;
-  bool isChecked7 = false;
+  List<bool> symptomps = [];
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +91,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
               width: w,
               alignment: Alignment.topCenter,
               margin: const EdgeInsets.only(left: 20, right: 20),
-              child: Text(question7,
+              child: Text(question8,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                       textStyle: const TextStyle(
@@ -116,7 +117,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Hipertensi',
+                      'Masalah pernapasan',
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
@@ -133,10 +134,10 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
 
                       if (isChecked1 == true) {
                         answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Hipertensi";
+                            "Masalah pernapasan";
                       } else {
-                        answerChoosed
-                            .removeWhere((key, value) => value == "Hipertensi");
+                        answerChoosed.removeWhere(
+                            (key, value) => value == "Masalah pernapasan");
                       }
                     },
                   )),
@@ -150,7 +151,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Diabetes melitus',
+                      'Batuk kering',
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
@@ -167,10 +168,10 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
 
                       if (isChecked2 == true) {
                         answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Diabetes melitus";
+                            "Batuk kering";
                       } else {
                         answerChoosed.removeWhere(
-                            (key, value) => value == "Diabetes melitus");
+                            (key, value) => value == "Batuk kering");
                       }
                     },
                   )),
@@ -184,7 +185,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Penyakit jantung',
+                      'Sakit tenggorokan',
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
@@ -201,10 +202,10 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
 
                       if (isChecked3 == true) {
                         answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Penyakit jantung";
+                            "Sakit tenggorokan";
                       } else {
                         answerChoosed.removeWhere(
-                            (key, value) => value == "Penyakit jantung");
+                            (key, value) => value == "Sakit tenggorokan");
                       }
                     },
                   )),
@@ -218,7 +219,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Penyakit gangguan pernapasan',
+                      'Pilek',
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
@@ -235,10 +236,10 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
 
                       if (isChecked4 == true) {
                         answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Penyakit gangguan pernapasan";
+                            "Pilek";
                       } else {
-                        answerChoosed.removeWhere((key, value) =>
-                            value == "Penyakit gangguan pernapasan");
+                        answerChoosed
+                            .removeWhere((key, value) => value == "Pilek");
                       }
                     },
                   )),
@@ -252,7 +253,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      'Penyakit ginjal kronis',
+                      'Lemah, letih, lesu',
                       style: GoogleFonts.lato(
                         textStyle: const TextStyle(
                             color: Color.fromARGB(1000, 18, 18, 18),
@@ -269,78 +270,10 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
 
                       if (isChecked5 == true) {
                         answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Penyakit ginjal kronis";
+                            "Lemah, letih, lesu";
                       } else {
                         answerChoosed.removeWhere(
-                            (key, value) => value == "Penyakit ginjal kronis");
-                      }
-                    },
-                  )),
-              //Option 6
-              Container(
-                  padding: const EdgeInsets.all(4),
-                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: const Color.fromARGB(1000, 241, 241, 241),
-                  ),
-                  child: CheckboxListTile(
-                    title: Text(
-                      'Penyakit gangguan syaraf',
-                      style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
-                            color: Color.fromARGB(1000, 18, 18, 18),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            height: 1.4),
-                      ),
-                    ),
-                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: isChecked6,
-                    onChanged: (value) {
-                      setState(() => isChecked6 = value!);
-
-                      if (isChecked6 == true) {
-                        answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Penyakit gangguan syaraf";
-                      } else {
-                        answerChoosed.removeWhere((key, value) =>
-                            value == "Penyakit gangguan syaraf");
-                      }
-                    },
-                  )),
-              //Option 7
-              Container(
-                  padding: const EdgeInsets.all(4),
-                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: const Color.fromARGB(1000, 241, 241, 241),
-                  ),
-                  child: CheckboxListTile(
-                    title: Text(
-                      'Penyakit liver',
-                      style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
-                            color: Color.fromARGB(1000, 18, 18, 18),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            height: 1.4),
-                      ),
-                    ),
-                    activeColor: const Color.fromARGB(1000, 134, 22, 87),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: isChecked7,
-                    onChanged: (value) {
-                      setState(() => isChecked7 = value!);
-
-                      if (isChecked1 == true) {
-                        answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Penyakit liver";
-                      } else {
-                        answerChoosed.removeWhere(
-                            (key, value) => value == "Penyakit liver");
+                            (key, value) => value == "Lemah, letih, lesu");
                       }
                     },
                   )),
@@ -348,6 +281,7 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
           ),
           //Spacing between (question and options) and buttons
           SizedBox(height: 0.032 * h),
+          //Buttons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -387,25 +321,32 @@ class _FifthPageScreeningState extends State<FifthPageScreening> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () {
-                      if (isChecked1 == true ||
-                          isChecked2 == true ||
-                          isChecked3 == true ||
-                          isChecked4 == true ||
-                          isChecked5 == true ||
-                          isChecked6 == true ||
-                          isChecked7 == true) {
-                        fifthPageScore = 5;
+                      symptomps = [
+                        isChecked1,
+                        isChecked2,
+                        isChecked3,
+                        isChecked4,
+                        isChecked5
+                      ];
+                      tempScore = symptomps
+                          .where((element) => element == true)
+                          .toList()
+                          .length;
+
+                      if (tempScore != 0) {
+                        sixthPageScore = 3 + tempScore - 1;
                       } else {
-                        fifthPageScore = 0;
+                        sixthPageScore = 0;
                       }
 
-                      data['fifth_page'] = {
-                        'question': question7,
+                      data['sixth_page'] = {
+                        'question': question8,
                         'answer': answerChoosed,
-                        'score': fifthPageScore
+                        'score': sixthPageScore
                       };
 
-                      Get.to(() => const SixthPageScreening(), arguments: data);
+                      Get.to(() => const SeventhPageScreening(),
+                          arguments: data);
                     },
                     child: Text(
                       'Selanjutnya',

@@ -3,15 +3,14 @@
 /*
 Pertanyaan gejala 14 hari terakhir, layer 3
 */
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/screens/Screening%20Result/recommendation_mild.dart';
-import 'package:healthyin/screens/Screening%20Result/recommendation_moderate.dart';
-import 'package:healthyin/screens/Screening%20Result/recommendation_severe.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20Result/recommendation_mild.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20Result/recommendation_moderate.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20Result/recommendation_severe.dart';
 
 class SeventhPageScreening extends StatefulWidget {
   const SeventhPageScreening({super.key});

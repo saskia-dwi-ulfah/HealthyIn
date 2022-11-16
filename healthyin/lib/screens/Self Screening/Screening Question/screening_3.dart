@@ -6,7 +6,7 @@ Pertanyaan kunjungan ke negara endemis
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthyin/screens/Self%20Screening/screening_4.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20Question/screening_4.dart';
 
 class ThirdPageScreening extends StatefulWidget {
   const ThirdPageScreening({super.key});
