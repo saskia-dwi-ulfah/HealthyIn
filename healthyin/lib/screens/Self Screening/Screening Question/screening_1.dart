@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
-import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 import 'package:healthyin/screens/Self%20Screening/Screening%20Question/screening_2.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_main_page.dart';
 
 class FirstPageScreening extends StatefulWidget {
   const FirstPageScreening({super.key});
@@ -248,11 +248,8 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                                 actions: [
                                   TextButton(
                                       onPressed: () {
-                                        Get.offAll(() => HealthyInMainPage(
-                                            email: AuthController()
-                                                .auth
-                                                .currentUser!
-                                                .email!));
+                                        Get.offAll(
+                                            () => const ScreeningMainPage());
                                       },
                                       child: Text('Yakin',
                                           style: GoogleFonts.lato(

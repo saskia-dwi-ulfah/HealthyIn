@@ -7,8 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/model/hospital_model.dart';
 import 'package:healthyin/widget/hotel_card.dart';
-import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 import 'package:healthyin/controller/auth_controller.dart';
+import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
 
 class HospitalListPage extends StatefulWidget {
   const HospitalListPage({super.key});

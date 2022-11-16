@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
-import 'package:healthyin/screens/Self%20Screening/Screening%20Question/screening_1.dart';
+import 'package:healthyin/screens/Self%20Screening/screening_main_page.dart';
 
 class HealthyInMainPage extends StatefulWidget {
   String email;
@@ -249,7 +249,8 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                     borderRadius: BorderRadius.circular(12)),
                               ),
                               onPressed: () {
-                                showDialog(
+                                Get.to(() => const ScreeningMainPage());
+                                /* showDialog(
                                     context: context,
                                     builder: ((context) => AlertDialog(
                                           title: Text('Disclaimer',
@@ -305,7 +306,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                                                     .black,
                                                                 height: 1.4))))
                                           ],
-                                        )));
+                                        )));*/
                               },
                               child: Text(
                                 'Mulai',
