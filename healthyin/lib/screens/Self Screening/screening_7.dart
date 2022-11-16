@@ -3,6 +3,8 @@
 /*
 Pertanyaan gejala 14 hari terakhir, layer 3
 */
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,6 +49,9 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
   //for storing data to the database
   CollectionReference screeningHistory =
       FirebaseFirestore.instance.collection('self_screening_history');
+
+  // ignore: prefer_typing_uninitialized_variables
+  var idSkrining;
 
   @override
   Widget build(BuildContext context) {
@@ -495,28 +500,15 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                                             data['sixth_page']['score'] +
                                             data['seventh_page']['score'];
 
+                                        //for determining risk level
                                         if (finalScore < 5) {
-                                          Get.offAll(
-                                              () => const MildRecommendation(),
-                                              arguments: data);
-
                                           data['screening_result'] =
                                               'Risiko ringan';
                                         } else if (finalScore >= 5 &&
                                             finalScore <= 7) {
-                                          Get.offAll(
-                                              () =>
-                                                  const ModerateRecommendation(),
-                                              arguments: data);
-
                                           data['screening_result'] =
                                               'Risiko sedang';
                                         } else if (finalScore > 7) {
-                                          Get.offAll(
-                                              () =>
-                                                  const SevereRecommendation(),
-                                              arguments: data);
-
                                           data['screening_result'] =
                                               'Risiko berat';
                                         }
@@ -534,9 +526,31 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                                           'score': finalScore,
                                           'screening_result':
                                               data['screening_result'],
-                                          // ignore: avoid_print
-                                        }).then((value) => print(
-                                            'Data successfully submitted'));
+                                        }).then((value) {
+                                          setState(() {
+                                            idSkrining = value;
+                                          });
+                                        });
+
+                                        //reference for displaying screening history and consultation history
+                                        data['id_skrining'] = idSkrining;
+
+                                        if (finalScore < 5) {
+                                          Get.offAll(
+                                              () => const MildRecommendation(),
+                                              arguments: data);
+                                        } else if (finalScore >= 5 &&
+                                            finalScore <= 7) {
+                                          Get.offAll(
+                                              () =>
+                                                  const ModerateRecommendation(),
+                                              arguments: data);
+                                        } else if (finalScore > 7) {
+                                          Get.offAll(
+                                              () =>
+                                                  const SevereRecommendation(),
+                                              arguments: data);
+                                        }
                                       },
                                       child: Text('OK',
                                           style: GoogleFonts.lato(
@@ -558,72 +572,6 @@ class _SeventhPageScreeningState extends State<SeventhPageScreening> {
                                                   height: 1.4))))
                                 ],
                               )));
-                      /*symptomps = [
-                        isChecked1,
-                        isChecked2,
-                        isChecked3,
-                        isChecked4,
-                        isChecked5,
-                        isChecked6,
-                        isChecked7,
-                        isChecked8
-                      ];
-
-                      tempScore = symptomps
-                          .where((element) => element == true)
-                          .toList()
-                          .length;
-
-                      if (tempScore != 0) {
-                        seventhPageScore = tempScore * 2;
-                      } else {
-                        seventhPageScore = 0;
-                      }
-
-                      data['seventh_page'] = {
-                        'question': question9,
-                        'answer': answerChoosed,
-                        'score': seventhPageScore
-                      };
-
-                      finalScore = data['second_page']['score'] +
-                          data['third_page']['score'] +
-                          data['fourth_page']['score'] +
-                          data['fifth_page']['score'] +
-                          data['sixth_page']['score'] +
-                          data['seventh_page']['score'];
-
-                      if (finalScore < 5) {
-                        Get.offAll(() => const MildRecommendation(),
-                            arguments: data);
-
-                        data['screening_result'] = 'Risiko ringan';
-                      } else if (finalScore >= 5 && finalScore <= 7) {
-                        Get.offAll(() => const ModerateRecommendation(),
-                            arguments: data);
-
-                        data['screening_result'] = 'Risiko sedang';
-                      } else if (finalScore > 7) {
-                        Get.offAll(() => const SevereRecommendation(),
-                            arguments: data);
-
-                        data['screening_result'] = 'Risiko berat';
-                      }
-
-                      //save data to Firestore
-                      await screeningHistory.add({
-                        'done_at': DateTime.now(),
-                        'identity': data['identity'],
-                        'second_page': data['second_page'],
-                        'third_page': data['third_page'],
-                        'fourth_page': data['fourth_page'],
-                        'fifth_page': data['fifth_page'],
-                        'sixth_page': data['sixth_page'],
-                        'seventh_page': data['seventh_page'],
-                        'score': finalScore,
-                        'screening_result': data['screening_result'],
-                        // ignore: avoid_print
-                      }).then((value) => print('Data successfully submitted'));*/
                     },
                     child: Text(
                       'Selesai',

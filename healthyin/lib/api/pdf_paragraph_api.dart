@@ -22,6 +22,13 @@ class PdfParagraphApi {
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: PdfColors.black))),
+          buildQuestion(''),
+          buildQuestion(
+              'ID Skrining Mandiri: ${data['id_skrining'].toString().substring(data['id_skrining'].toString().length - 21, data['id_skrining'].toString().length - 1)}'),
+          buildQuestion(
+              'ID Pasien: ${data['identity']['authenticated_user_id']}'),
+          buildQuestion(
+              'Hasil skrining mandiri COVID-18: ${data['screening_result']} COVID-19'),
           buildQuestion('1. Nama: ${data['identity']['nama']}'),
           buildQuestion('2. Gender: ${data['identity']['gender']}'),
           buildQuestion('3. Usia: ${data['identity']['usia']} tahun'),

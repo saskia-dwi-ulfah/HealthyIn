@@ -16,6 +16,7 @@ class MildRecommendation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //get list of screening result and its ID on Firestore
     var data = Get.arguments;
 
     double w = MediaQuery.of(context).size.width;
