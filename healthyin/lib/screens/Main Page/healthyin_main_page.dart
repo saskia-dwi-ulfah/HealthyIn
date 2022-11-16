@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, must_be_immutable
+// ignore_for_file: sized_box_for_whitespace, must_be_immutable, prefer_typing_uninitialized_variables
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -86,7 +86,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                 onPressed: () {
                                   AuthController.instance.logout();
                                 },
-                                child: Text('OK',
+                                child: Text('Yakin',
                                     style: GoogleFonts.lato(
                                         textStyle: const TextStyle(
                                             letterSpacing: 0.5,
@@ -156,7 +156,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                 if (snapshot.connectionState != ConnectionState.done) {
                   return Text("...",
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w900,
                               letterSpacing: 0.5,
@@ -165,7 +165,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                 } else {
                   return Text(name,
                       style: GoogleFonts.lato(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w900,
                               letterSpacing: 0.5,
@@ -273,7 +273,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                           actions: [
                                             TextButton(
                                                 onPressed: () {
-                                                  Get.to(
+                                                  Get.to(() =>
                                                       const FirstPageScreening());
                                                 },
                                                 child: Text('OK',

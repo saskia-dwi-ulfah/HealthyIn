@@ -225,8 +225,55 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     onPressed: () {
-                      Get.offAll(() => HealthyInMainPage(
-                          email: AuthController().auth.currentUser!.email!));
+                      showDialog(
+                          context: context,
+                          builder: ((context) => AlertDialog(
+                                title: Text('Warning',
+                                    style: GoogleFonts.lato(
+                                        textStyle: const TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                            letterSpacing: 0.5,
+                                            color: Color.fromARGB(
+                                                1000, 134, 22, 87),
+                                            height: 1.4))),
+                                content: Text(
+                                    'Anda belum menyelesaikan skrining mandiri COVID-19. Yakin ingin keluar?',
+                                    style: GoogleFonts.lato(
+                                        textStyle: const TextStyle(
+                                            fontSize: 16,
+                                            letterSpacing: 0.5,
+                                            color: Colors.black,
+                                            height: 1.4))),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Get.offAll(() => HealthyInMainPage(
+                                            email: AuthController()
+                                                .auth
+                                                .currentUser!
+                                                .email!));
+                                      },
+                                      child: Text('Yakin',
+                                          style: GoogleFonts.lato(
+                                              textStyle: const TextStyle(
+                                                  letterSpacing: 0.5,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                  height: 1.4)))),
+                                  TextButton(
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      child: Text('Batal',
+                                          style: GoogleFonts.lato(
+                                              textStyle: const TextStyle(
+                                                  letterSpacing: 0.5,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                  height: 1.4))))
+                                ],
+                              )));
                     },
                     child: Text(
                       'Keluar',
@@ -251,7 +298,7 @@ class _FirstPageScreeningState extends State<FirstPageScreening> {
                     ),
                     onPressed: () {
                       allData['identity'] = {
-                        'email': Get.arguments,
+                        'email': AuthController().auth.currentUser!.email,
                         'authenticated_user_id':
                             AuthController().auth.currentUser!.uid,
                         'nama': nameController.text.trim(),
