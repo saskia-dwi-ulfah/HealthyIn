@@ -59,7 +59,7 @@ Widget buildHospitalCard(BuildContext context, DocumentSnapshot document) {
         ),
       ),
       onTap: () {
-        Get.to(HospitalDetail(hospital: hospital));
+        Get.to(() => HospitalDetail(hospital: hospital));
       },
     ),
   );
