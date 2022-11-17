@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +25,13 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
   }*/
 
 //consultation history id and self screening id is the same.
-  getConsultationHistory(var screeningID) async {}
+  getConsultationHistory(var screeningID) async {
+    await FirebaseFirestore.instance
+        .collection('consultation_history')
+        .doc(screeningID)
+        .get()
+        .then((data) => {consultationHistorySnapshot = data.data()});
+  }
 
   Widget buildAnswer(dynamic answer) {
     if (answer.length == 0) {
@@ -105,7 +112,7 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
           future: getConsultationHistory(screeningID),
           builder: (context, snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {
-              return const Text("...");
+              return Text("...");
             } else {
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
