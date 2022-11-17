@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:healthyin/model/self_screening_result_model.dart';
+import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 
 class ScreeningHistoryDetail extends StatefulWidget {
   final ScreeningResultModel screeningResult;
@@ -14,6 +14,95 @@ class ScreeningHistoryDetail extends StatefulWidget {
 }
 
 class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
+//consultation history id and self screening id is the same.
+  getConsultationHistory(var screeningID) async {
+    var data = await FirebaseFirestore.instance
+        .collection('consultation_history')
+        .doc(screeningID)
+        .get();
+
+    return data.runtimeType.toString();
+  }
+
+  Widget buildAnswer(dynamic answer) {
+    if (answer.length == 0) {
+      return Text("Tidak ada",
+          textAlign: TextAlign.left,
+          style: GoogleFonts.lato(
+              textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(1000, 18, 18, 18),
+                  height: 1.5)));
+    } else {
+      var symptoms = answer
+          .toString()
+          .substring(1, answer.toString().length - 1)
+          .trim()
+          .split(', ');
+      return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: symptoms.map((value) {
+            return Text("\u2022 ${value.substring(3)}",
+                textAlign: TextAlign.left,
+                style: GoogleFonts.lato(
+                    textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(1000, 18, 18, 18),
+                        height: 1.5)));
+          }).toList());
+    }
+  }
+
+  Widget buildFurtherRecommendation(var screeningResult, var screeningID) {
+    double w = MediaQuery.of(context).size.width;
+
+    if (screeningResult == 'Risiko berat' ||
+        screeningResult == 'Risiko sedang') {
+      return Column(children: [
+        Text(
+            "Anda disarankan untuk melakukan konsultasi langsung ke rumah sakit.",
+            style: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                    fontSize: 16,
+                    color: Color.fromARGB(1000, 18, 18, 18),
+                    height: 1.5))),
+        const SizedBox(height: 10),
+        GestureDetector(
+          onTap: () {
+            Get.to(() => const HospitalListPage());
+          },
+          child: Container(
+            width: w,
+            height: 45,
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: const LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                    colors: [
+                      Color.fromARGB(1000, 134, 22, 87),
+                      Color.fromARGB(1000, 193, 31, 126)
+                    ])),
+            child: Center(
+              child: Text("Daftar Rumah Sakit D.I. Yogyakarta",
+                  style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      color: Colors.white)),
+            ),
+          ),
+        )
+      ]);
+    } else {
+      return Text("");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -167,7 +256,7 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
                       const SizedBox(height: 20),
-                      Text("Pertanyaan dan jawaban skrining ",
+                      Text("PERTANYAAN DAN JAWABAN SKRINING ",
                           textAlign: TextAlign.left,
                           style: GoogleFonts.lato(
                               textStyle: const TextStyle(
@@ -191,7 +280,7 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
-                      const SizedBox(height: 10),
+                      //const SizedBox(height: 10),
                       Text(
                           "2. ${widget.screeningResult.third_page['question'].toString().substring(3)}",
                           textAlign: TextAlign.left,
@@ -208,7 +297,7 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
-                      const SizedBox(height: 10),
+                      //const SizedBox(height: 10),
                       Text(
                           "3. ${widget.screeningResult.fourth_page['question'].toString().substring(3)}",
                           textAlign: TextAlign.left,
@@ -225,7 +314,7 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
-                      const SizedBox(height: 10),
+                      //const SizedBox(height: 10),
                       Text(
                           "4. ${widget.screeningResult.fifth_page['question'].toString().substring(3)}",
                           textAlign: TextAlign.left,
@@ -234,7 +323,8 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   fontSize: 16,
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
-                      const SizedBox(height: 10),
+                      buildAnswer(widget.screeningResult.fifth_page['answer']),
+                      //const SizedBox(height: 10),
                       Text(
                           "5. ${widget.screeningResult.sixth_page['question'].toString().substring(3)}",
                           textAlign: TextAlign.left,
@@ -243,7 +333,8 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   fontSize: 16,
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
-                      const SizedBox(height: 10),
+                      buildAnswer(widget.screeningResult.sixth_page['answer']),
+                      //const SizedBox(height: 10),
                       Text(
                           "6. ${widget.screeningResult.seventh_page['question'].toString().substring(3)}",
                           textAlign: TextAlign.left,
@@ -252,6 +343,20 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
                                   fontSize: 16,
                                   color: Color.fromARGB(1000, 18, 18, 18),
                                   height: 1.5))),
+                      buildAnswer(
+                          widget.screeningResult.seventh_page['answer']),
+                      const SizedBox(height: 20),
+                      Text("HASIL REKOMENDASI SKRINING MANDIRI ",
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromARGB(1000, 4, 167, 119),
+                                  height: 1.5))),
+                      buildFurtherRecommendation(
+                          widget.screeningResult.screening_result,
+                          widget.screeningResult.id_skrining)
                     ],
                   )))
             ],
