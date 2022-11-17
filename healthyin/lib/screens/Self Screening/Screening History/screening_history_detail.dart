@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthyin/model/consultation_history_model.dart';
 import 'package:healthyin/model/self_screening_result_model.dart';
 import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 
@@ -14,14 +17,17 @@ class ScreeningHistoryDetail extends StatefulWidget {
 }
 
 class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
+  var consultationHistorySnapshot;
+
 //consultation history id and self screening id is the same.
   getConsultationHistory(var screeningID) async {
-    var data = await FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection('consultation_history')
         .doc(screeningID)
-        .get();
-
-    return data.runtimeType.toString();
+        .get()
+        .then((value) {
+      consultationHistorySnapshot = value;
+    });
   }
 
   Widget buildAnswer(dynamic answer) {
