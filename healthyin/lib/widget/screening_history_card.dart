@@ -7,6 +7,7 @@ import 'package:healthyin/screens/Self%20Screening/Screening%20History/screening
 
 Widget buildScreeningHistoryCard(
     BuildContext context, DocumentSnapshot document) {
+  //screening result = storing all values from self_screening_history collection
   final screeningResult = ScreeningResultModel.fromSnapshot(document);
 
   return Card(
