@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ScreeningResultModel {
+  String id_skrining;
   Timestamp done_at;
   Map identity;
   Map second_page;
@@ -15,6 +16,7 @@ class ScreeningResultModel {
   String screening_result;
 
   ScreeningResultModel(
+      this.id_skrining,
       this.done_at,
       this.identity,
       this.second_page,
@@ -27,7 +29,8 @@ class ScreeningResultModel {
       this.screening_result);
 
   ScreeningResultModel.fromSnapshot(DocumentSnapshot snapshot)
-      : done_at = snapshot['done_at'],
+      : id_skrining = snapshot.id,
+        done_at = snapshot['done_at'],
         identity = snapshot['identity'],
         second_page = snapshot['second_page'],
         third_page = snapshot['third_page'],

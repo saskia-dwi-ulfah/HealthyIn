@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/model/self_screening_result_model.dart';
+import 'package:healthyin/screens/Self%20Screening/Screening%20History/screening_history_detail.dart';
 
 Widget buildScreeningHistoryCard(
     BuildContext context, DocumentSnapshot document) {
@@ -57,7 +58,9 @@ Widget buildScreeningHistoryCard(
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        Get.to(() => ScreeningHistoryDetail(screeningResult: screeningResult));
+      },
     ),
   );
 }

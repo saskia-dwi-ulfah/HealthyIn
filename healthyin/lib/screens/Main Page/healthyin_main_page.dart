@@ -309,7 +309,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                         )));*/
                               },
                               child: Text(
-                                'Mulai',
+                                'Buka',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.lato(
                                   textStyle: const TextStyle(
