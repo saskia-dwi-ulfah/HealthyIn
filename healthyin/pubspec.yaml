@@ -44,11 +44,12 @@ dependencies:
   get:
   google_fonts:
   google_sign_in:
-  open_file:
+  open_file: ^3.2.1
   path_provider:
   pdf:
   url_launcher: ^6.0.20
   maps_launcher:
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_test:

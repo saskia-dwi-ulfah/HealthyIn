@@ -112,161 +112,175 @@ class _ScreeningHistoryDetailState extends State<ScreeningHistoryDetail> {
           future: getConsultationHistory(screeningID),
           builder: (context, snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {
-              return Text("...");
+              return const Text("...");
             } else {
-              return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Obat 1 ",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(1000, 134, 22, 87),
-                                height: 1.5))),
-                    Text("Nama obat: ${consultationHistorySnapshot['obat_1']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_1']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Catatan: ${consultationHistorySnapshot['catatan_obat_1']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text("Obat 2 ",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(1000, 134, 22, 87),
-                                height: 1.5))),
-                    Text("Nama obat: ${consultationHistorySnapshot['obat_2']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_2']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Catatan: ${consultationHistorySnapshot['catatan_obat_2']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text("Obat 3 ",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(1000, 134, 22, 87),
-                                height: 1.5))),
-                    Text("Nama obat: ${consultationHistorySnapshot['obat_3']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_3']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Catatan: ${consultationHistorySnapshot['catatan_obat_3']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text("Obat 4 ",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(1000, 134, 22, 87),
-                                height: 1.5))),
-                    Text("Nama obat: ${consultationHistorySnapshot['obat_4']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_4']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Catatan: ${consultationHistorySnapshot['catatan_obat_4']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text("Obat 5 ",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(1000, 134, 22, 87),
-                                height: 1.5))),
-                    Text("Nama obat: ${consultationHistorySnapshot['obat_5']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_5']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text(
-                        "Catatan: ${consultationHistorySnapshot['catatan_obat_5']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                    Text("Catatan umum ",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(1000, 134, 22, 87),
-                                height: 1.5))),
-                    Text(
-                        "${consultationHistorySnapshot['catatan_keseluruhan']}",
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                fontSize: 16,
-                                color: Color.fromARGB(1000, 18, 18, 18),
-                                height: 1.5))),
-                  ]);
+              if (consultationHistorySnapshot == null) {
+                return Text("Belum ada.",
+                    style: GoogleFonts.lato(
+                        textStyle: const TextStyle(
+                            fontSize: 16,
+                            color: Color.fromARGB(1000, 18, 18, 18),
+                            height: 1.5)));
+              } else {
+                return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Obat 1 ",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(1000, 134, 22, 87),
+                                  height: 1.5))),
+                      Text(
+                          "Nama obat: ${consultationHistorySnapshot['obat_1']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_1']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Catatan: ${consultationHistorySnapshot['catatan_obat_1']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text("Obat 2 ",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(1000, 134, 22, 87),
+                                  height: 1.5))),
+                      Text(
+                          "Nama obat: ${consultationHistorySnapshot['obat_2']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_2']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Catatan: ${consultationHistorySnapshot['catatan_obat_2']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text("Obat 3 ",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(1000, 134, 22, 87),
+                                  height: 1.5))),
+                      Text(
+                          "Nama obat: ${consultationHistorySnapshot['obat_3']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_3']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Catatan: ${consultationHistorySnapshot['catatan_obat_3']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text("Obat 4 ",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(1000, 134, 22, 87),
+                                  height: 1.5))),
+                      Text(
+                          "Nama obat: ${consultationHistorySnapshot['obat_4']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_4']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Catatan: ${consultationHistorySnapshot['catatan_obat_4']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text("Obat 5 ",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(1000, 134, 22, 87),
+                                  height: 1.5))),
+                      Text(
+                          "Nama obat: ${consultationHistorySnapshot['obat_5']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Aturan pemakaian: ${consultationHistorySnapshot['aturan_obat_5']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text(
+                          "Catatan: ${consultationHistorySnapshot['catatan_obat_5']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                      Text("Catatan umum ",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(1000, 134, 22, 87),
+                                  height: 1.5))),
+                      Text(
+                          "${consultationHistorySnapshot['catatan_keseluruhan']}",
+                          style: GoogleFonts.lato(
+                              textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(1000, 18, 18, 18),
+                                  height: 1.5))),
+                    ]);
+              }
             }
           });
     }

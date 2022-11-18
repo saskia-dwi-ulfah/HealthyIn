@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthyin/controller/auth_controller.dart';
+import 'package:healthyin/screens/Artikel%20Page/healthyin_artikel_list_page.dart';
 import 'package:healthyin/screens/Hospital%20Page/hospital_list_page.dart';
 import 'package:healthyin/screens/Self%20Screening/screening_main_page.dart';
 
@@ -565,7 +566,8 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                     borderRadius: BorderRadius.circular(12)),
                               ),
                               onPressed: () {
-                                showDialog(
+                                Get.to(() => const NewsPage());
+                                /*showDialog(
                                     context: context,
                                     builder: ((context) => AlertDialog(
                                           title: Text('Maaf ya...',
@@ -604,7 +606,7 @@ class _HealthyInMainPageState extends State<HealthyInMainPage> {
                                                                     .black,
                                                                 height: 1.4))))
                                           ],
-                                        )));
+                                        )));*/
                               },
                               child: Text(
                                 'Baca',
