@@ -12,7 +12,7 @@ class HealthyInSplashScreen extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
 
     return Container(
-      constraints: BoxConstraints.expand(),
+      constraints: const BoxConstraints.expand(),
       height: h,
       width: w,
       decoration: const BoxDecoration(
@@ -31,28 +31,5 @@ class HealthyInSplashScreen extends StatelessWidget {
         ],
       ),
     );
-    ;
-
-    /*return AnimatedHealthyInSplashScreen(
-      splash: Container(
-        height: h,
-        width: w,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/HealthyInSplashScreen_bg.png'),
-              fit: BoxFit.fill),
-        ),
-        child: Stack(
-          alignment: AlignmentDirectional.center,
-          children: [
-            Positioned(
-              top: 0.35 * h,
-              child: Image.asset('assets/images/HealthyInSplashScreen_tagline.png'),
-            )
-          ],
-        ),
-      ),
-      nextScreen: LoginPage(),
-    );*/
   }
 }
