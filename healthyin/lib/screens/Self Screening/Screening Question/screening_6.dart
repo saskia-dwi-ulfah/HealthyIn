@@ -270,10 +270,10 @@ class _SixthPageScreeningState extends State<SixthPageScreening> {
 
                       if (isChecked5 == true) {
                         answerChoosed[(answerChoosed.length + 1).toString()] =
-                            "Lemah, letih, lesu";
+                            "Lemah Letih Lesu";
                       } else {
                         answerChoosed.removeWhere(
-                            (key, value) => value == "Lemah, letih, lesu");
+                            (key, value) => value == "Lemah Letih Lesu");
                       }
                     },
                   )),
