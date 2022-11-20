@@ -6,7 +6,7 @@ Chat with doctor
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:healthyin/api/pdf_paragraph_api.dart';
 import 'package:healthyin/controller/auth_controller.dart';
 import 'package:healthyin/screens/Main%20Page/healthyin_main_page.dart';
@@ -23,13 +23,13 @@ class MildRecommendation extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
 
     openWhatsApp() async {
-      String number = "+6282133293450";
+      String number = "+6285878391837";
       String message =
           "Halo, saya ingin mengonsultasikan hasil skrining mandiri dari aplikasi HealthyIn.";
 
       try {
         String url = "whatsapp://send?phone=$number&text=$message";
-        await launchUrlString(url);
+        await launchUrl(Uri.parse(url));
       } catch (e) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text("Can't open WhatsApp.")));
